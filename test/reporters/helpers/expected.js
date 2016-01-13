@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 const expect = require('expect.js');
-const camelCase = require('lodash/string/camelCase');
-const defaults = require('lodash/object/defaults');
+const camelCase = require('lodash/camelCase');
+const assign = require('lodash/assign');
 const bufferStdio = require('../../helpers/buffer-stdio');
 const fixtures = require('../../fixtures');
 
@@ -25,9 +25,9 @@ function expectations(reporter) {
             fixture,
             expected,
             run(options) {
-                options = defaults(options || {}, {
+                options = assign({
                     reporter,
-                });
+                }, options);
 
                 const buffered = bufferStdio.start();
 

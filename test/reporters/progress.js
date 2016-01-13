@@ -1,6 +1,6 @@
 'use strict';
 
-const forIn = require('lodash/object/forIn');
+const forIn = require('lodash/forIn');
 const cliPogressBarThemes = require('cli-progress-bar/themes');
 const cliCharacterSet = require('cli-character-set')();
 const expected = require('./helpers/expected');

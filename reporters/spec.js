@@ -1,14 +1,14 @@
 'use strict';
 
 const chalk = require('chalk');
-const merge = require('lodash/object/merge');
+const assign = require('lodash/assign');
 const indentString = require('indent-string');
 const ansiEscapes = require('ansi-escapes');
 const duration = require('./util/duration');
 const symbols = require('./util/symbols');
 
 function reporter(options) {
-    options = merge({
+    options = assign({
         stdout: process.stdout,
     }, options);
 

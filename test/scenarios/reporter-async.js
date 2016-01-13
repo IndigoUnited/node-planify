@@ -2,7 +2,7 @@
 
 const Promise = require('bluebird');
 const expect = require('chai').expect;
-const pick = require('lodash/object/pick');
+const pick = require('lodash/pick');
 const fixtures = require('../fixtures');
 
 it('should run scenarios/reporter-async, verifying if the reporter asynchrony is respected', function () {

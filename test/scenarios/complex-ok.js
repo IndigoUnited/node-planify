@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
-const omit = require('lodash/object/omit');
+const omitBy = require('lodash/omitBy');
 const fixtures = require('../fixtures');
 const jsonReporter = require('../../reporters/json');
 
@@ -20,7 +20,7 @@ it('should run scenarios/complex-ok, verifying the order and the reporter integr
     .then(() => {
         const json = JSON.parse(stdout.trim());
         const actions = json.actions.map((action) => {
-            return omit({
+            return omitBy({
                 label: json.refs[action.ref].label,
                 action: action.name,
                 str: action.str,

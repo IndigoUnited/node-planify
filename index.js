@@ -3,8 +3,8 @@
 'use strict';
 
 const Promise = require('bluebird');
-const merge = require('lodash/object/merge');
-const get = require('lodash/object/get');
+const merge = require('lodash/merge');
+const get = require('lodash/get');
 const run = require('./lib/run');
 const promisify = require('./lib/promisify');
 const build = require('./lib/build');

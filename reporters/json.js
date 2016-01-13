@@ -1,7 +1,7 @@
 'use strict';
 
-const merge = require('lodash/object/merge');
-const pick = require('lodash/object/pick');
+const assign = require('lodash/assign');
+const pick = require('lodash/pick');
 const indentString = require('indent-string');
 
 function fillReferences(refs, node) {
@@ -34,7 +34,7 @@ function mapInfo(node) {
 function reporter(options) {
     let refs;
 
-    options = merge({
+    options = assign({
         stdout: process.stdout,
     }, options);
 

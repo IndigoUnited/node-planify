@@ -1,6 +1,6 @@
 'use strict';
 
-const forIn = require('lodash/object/forIn');
+const forIn = require('lodash/forIn');
 const symbols = require('../../../reporters/util/symbols');
 
 const symbolsReplacers = [];
