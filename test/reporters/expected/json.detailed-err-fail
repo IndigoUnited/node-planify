@@ -1,0 +1,82 @@
+{
+  "refs": {
+    "38enf8f75pyc": {
+      "type": "plan",
+      "label": "Plan",
+      "depth": -1
+    },
+    "u6g3jamn6cws": {
+      "type": "step",
+      "label": "Step",
+      "depth": 0,
+      "options": {
+        "mute": false,
+        "fatal": true,
+        "slow": 200
+      }
+    }
+  },
+  "actions": [
+    {
+      "name": "plan.start",
+      "ref": "38enf8f75pyc"
+    },
+    {
+      "name": "step.start",
+      "ref": "u6g3jamn6cws"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "u6g3jamn6cws",
+      "str": "step.visit\n"
+    },
+    {
+      "name": "step.fail",
+      "ref": "u6g3jamn6cws",
+      "info": {
+        "startedAt": 1452616432814,
+        "error": {
+          "message": "Fail with detail",
+          "code": "ESOMECODE",
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+        }
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "u6g3jamn6cws",
+      "info": {
+        "startedAt": 1452616432814,
+        "error": {
+          "message": "Fail with detail",
+          "code": "ESOMECODE",
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+        }
+      }
+    },
+    {
+      "name": "plan.fail",
+      "ref": "38enf8f75pyc",
+      "info": {
+        "startedAt": 1452616432814,
+        "error": {
+          "message": "Fail with detail",
+          "code": "ESOMECODE",
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+        }
+      }
+    },
+    {
+      "name": "plan.finish",
+      "ref": "38enf8f75pyc",
+      "info": {
+        "startedAt": 1452616432814,
+        "error": {
+          "message": "Fail with detail",
+          "code": "ESOMECODE",
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+        }
+      }
+    }
+  ]
+}

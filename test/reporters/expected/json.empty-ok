@@ -1,0 +1,35 @@
+{
+  "refs": {
+    "1r3nrgt95db4o": {
+      "type": "plan",
+      "label": "Plan",
+      "depth": -1
+    }
+  },
+  "actions": [
+    {
+      "name": "plan.start",
+      "ref": "1r3nrgt95db4o"
+    },
+    {
+      "name": "plan.ok",
+      "ref": "1r3nrgt95db4o",
+      "info": {
+        "startedAt": 1452616432816,
+        "finishedAt": 1452616432816,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "plan.finish",
+      "ref": "1r3nrgt95db4o",
+      "info": {
+        "startedAt": 1452616432816,
+        "finishedAt": 1452616432816,
+        "duration": 0,
+        "speed": "fast"
+      }
+    }
+  ]
+}

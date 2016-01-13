@@ -1,0 +1,420 @@
+{
+  "refs": {
+    "1n1t34lzus80c": {
+      "type": "plan",
+      "label": "Plan",
+      "depth": -1
+    },
+    "13m6293hxny8s": {
+      "type": "step",
+      "label": "Step 1 - Sync",
+      "depth": 0,
+      "options": {
+        "mute": false,
+        "fatal": true,
+        "slow": 200
+      }
+    },
+    "107o4bswipg0c": {
+      "type": "step",
+      "label": "Step 2 - Promise",
+      "depth": 0,
+      "options": {
+        "mute": false,
+        "fatal": true,
+        "slow": 200
+      }
+    },
+    "1zhhbhjfo9dss": {
+      "type": "step",
+      "label": "Step 3 - Callback",
+      "depth": 0,
+      "options": {
+        "mute": false,
+        "fatal": true,
+        "slow": 200
+      }
+    },
+    "1a45p41ghz7ks": {
+      "type": "phase",
+      "label": "Phase 1",
+      "depth": 0
+    },
+    "7d0m5p9vi6ww": {
+      "type": "step",
+      "label": "Step 4 - Promise",
+      "depth": 1,
+      "options": {
+        "mute": false,
+        "fatal": true,
+        "slow": 200
+      }
+    },
+    "bnitb2x4l40k": {
+      "type": "phase",
+      "label": "Phase 1.1",
+      "depth": 1
+    },
+    "11eoj26i3iq88": {
+      "type": "step",
+      "label": "Step 5 - Sync",
+      "depth": 2,
+      "options": {
+        "mute": false,
+        "fatal": false,
+        "slow": 200
+      }
+    },
+    "fvx2tzto98g0": {
+      "type": "phase",
+      "label": "Phase 2",
+      "depth": 0
+    },
+    "3rjeuai8ahc0": {
+      "type": "step",
+      "label": "Step 6 - Sync",
+      "depth": 1,
+      "options": {
+        "mute": false,
+        "fatal": true,
+        "slow": 200
+      }
+    },
+    "ra4aio9ionkc": {
+      "type": "step",
+      "label": "Step 7 - Sync",
+      "depth": 0,
+      "options": {
+        "mute": false,
+        "fatal": true,
+        "slow": 200
+      }
+    }
+  },
+  "actions": [
+    {
+      "name": "plan.start",
+      "ref": "1n1t34lzus80c"
+    },
+    {
+      "name": "step.start",
+      "ref": "13m6293hxny8s"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "13m6293hxny8s",
+      "str": "step-1.visit\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "13m6293hxny8s",
+      "info": {
+        "startedAt": 1452616432494,
+        "finishedAt": 1452616432494,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "13m6293hxny8s",
+      "info": {
+        "startedAt": 1452616432494,
+        "finishedAt": 1452616432494,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.start",
+      "ref": "107o4bswipg0c"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "107o4bswipg0c",
+      "str": "step-2.enter\n"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "107o4bswipg0c",
+      "str": "step-2.leave\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "107o4bswipg0c",
+      "info": {
+        "startedAt": 1452616432494,
+        "finishedAt": 1452616432599,
+        "duration": 105,
+        "speed": "medium"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "107o4bswipg0c",
+      "info": {
+        "startedAt": 1452616432494,
+        "finishedAt": 1452616432599,
+        "duration": 105,
+        "speed": "medium"
+      }
+    },
+    {
+      "name": "step.start",
+      "ref": "1zhhbhjfo9dss"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "1zhhbhjfo9dss",
+      "str": "step-3.enter\n"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "1zhhbhjfo9dss",
+      "str": "step-3.leave\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "1zhhbhjfo9dss",
+      "info": {
+        "startedAt": 1452616432600,
+        "finishedAt": 1452616432701,
+        "duration": 101,
+        "speed": "medium"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "1zhhbhjfo9dss",
+      "info": {
+        "startedAt": 1452616432600,
+        "finishedAt": 1452616432701,
+        "duration": 101,
+        "speed": "medium"
+      }
+    },
+    {
+      "name": "phase.start",
+      "ref": "1a45p41ghz7ks"
+    },
+    {
+      "name": "step.start",
+      "ref": "7d0m5p9vi6ww"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "7d0m5p9vi6ww",
+      "str": "step-4.enter\n"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "7d0m5p9vi6ww",
+      "str": "step-4.leave\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "7d0m5p9vi6ww",
+      "info": {
+        "startedAt": 1452616432701,
+        "finishedAt": 1452616432753,
+        "duration": 52,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "7d0m5p9vi6ww",
+      "info": {
+        "startedAt": 1452616432701,
+        "finishedAt": 1452616432753,
+        "duration": 52,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.start",
+      "ref": "bnitb2x4l40k"
+    },
+    {
+      "name": "step.start",
+      "ref": "11eoj26i3iq88"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "11eoj26i3iq88",
+      "str": "step-5.visit\n"
+    },
+    {
+      "name": "step.write.stderr",
+      "ref": "11eoj26i3iq88",
+      "str": "Will throw an error\n"
+    },
+    {
+      "name": "step.fail",
+      "ref": "11eoj26i3iq88",
+      "info": {
+        "startedAt": 1452616432754,
+        "error": {
+          "message": "Will be ignored"
+        }
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "11eoj26i3iq88",
+      "info": {
+        "startedAt": 1452616432754,
+        "error": {
+          "message": "Will be ignored"
+        }
+      }
+    },
+    {
+      "name": "phase.ok",
+      "ref": "bnitb2x4l40k",
+      "info": {
+        "startedAt": 1452616432754,
+        "finishedAt": 1452616432754,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.finish",
+      "ref": "bnitb2x4l40k",
+      "info": {
+        "startedAt": 1452616432754,
+        "finishedAt": 1452616432754,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.ok",
+      "ref": "1a45p41ghz7ks",
+      "info": {
+        "startedAt": 1452616432701,
+        "finishedAt": 1452616432754,
+        "duration": 53,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.finish",
+      "ref": "1a45p41ghz7ks",
+      "info": {
+        "startedAt": 1452616432701,
+        "finishedAt": 1452616432754,
+        "duration": 53,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.start",
+      "ref": "fvx2tzto98g0"
+    },
+    {
+      "name": "step.start",
+      "ref": "3rjeuai8ahc0"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "3rjeuai8ahc0",
+      "str": "step-6.enter\n"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "3rjeuai8ahc0",
+      "str": "step-6.leave\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "3rjeuai8ahc0",
+      "info": {
+        "startedAt": 1452616432755,
+        "finishedAt": 1452616432809,
+        "duration": 54,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "3rjeuai8ahc0",
+      "info": {
+        "startedAt": 1452616432755,
+        "finishedAt": 1452616432809,
+        "duration": 54,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.ok",
+      "ref": "fvx2tzto98g0",
+      "info": {
+        "startedAt": 1452616432755,
+        "finishedAt": 1452616432810,
+        "duration": 55,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.finish",
+      "ref": "fvx2tzto98g0",
+      "info": {
+        "startedAt": 1452616432755,
+        "finishedAt": 1452616432810,
+        "duration": 55,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.start",
+      "ref": "ra4aio9ionkc"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "ra4aio9ionkc",
+      "str": "step-7.visit\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "ra4aio9ionkc",
+      "info": {
+        "startedAt": 1452616432810,
+        "finishedAt": 1452616432810,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "ra4aio9ionkc",
+      "info": {
+        "startedAt": 1452616432810,
+        "finishedAt": 1452616432810,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "plan.ok",
+      "ref": "1n1t34lzus80c",
+      "info": {
+        "startedAt": 1452616432493,
+        "finishedAt": 1452616432810,
+        "duration": 317,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "plan.finish",
+      "ref": "1n1t34lzus80c",
+      "info": {
+        "startedAt": 1452616432493,
+        "finishedAt": 1452616432810,
+        "duration": 317,
+        "speed": "fast"
+      }
+    }
+  ]
+}
