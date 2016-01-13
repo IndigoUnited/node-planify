@@ -61,15 +61,15 @@ You can build nested phases as many times as you wish. API is chainable to make 
 
 Running this would look like this:
 
-<img src="./doc/example-blocks.png">
+<img src="./doc/example-blocks.png" width="600">
 
 But changing the reporter to `spec` would look like this:
 
-<img src="./doc/example-spec.png">
+<img src="./doc/example-spec.png" width="600">
 
 This is very similar to the [mocha](https://github.com/mochajs/mocha)'s spec reporter isn't it? In fact a lot of the API was inspired in it. Finally, changing the reporter to `progress` would show a beautiful progress bar instead:
 
-<img src="./doc/example-progress.png">
+<img src="./doc/example-progress.png" width="600">
 
 As you can see, changing the appearance of the output is very easy. You may even allow your CLI users to choose the reporter by mapping `--reporter` to `options.reporter` by using [yargs](https://github.com/bcoe/yargs) or something similar. Cool huh?
 
@@ -124,7 +124,7 @@ Creates a plan with the `given` options.
 
 Available options:
 
-- `reporter`: The reporter to be used which can be a string or a reporter object, defaults to `blocks`.
+- `reporter`: The reporter to be used which can be a string or a reporter object, defaults to `blocks`
 - `exit`: True to exit automatically after running, defaults to `false`
 
 ```js
