@@ -5,6 +5,7 @@
 const Promise = require('bluebird');
 const merge = require('lodash/merge');
 const get = require('lodash/get');
+const isPlainObject = require('lodash/isPlainObject');
 const run = require('./lib/run');
 const promisify = require('./lib/promisify');
 const build = require('./lib/build');
@@ -22,6 +23,8 @@ function setupReporter(reporter) {
         }
 
         reporter = factory();
+    } else if (!isPlainObject(reporter)) {
+        throw new Error('Reporter must be a string or a plain object');
     }
 
     // Finally promisify it

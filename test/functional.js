@@ -300,7 +300,11 @@ describe('functional', () => {
             expect(() => {
                 function Foo() {}
                 planify({ reporter: new Foo() });
-            }).to.throw('Reporter must be a plain object');
+            }).to.throw('Reporter must be a string or a plain object');
+
+            expect(() => {
+                planify({ reporter: true });
+            }).to.throw('Reporter must be a string or a plain object');
         });
 
         it('should exit automatically with an appropriate exit code if options.exit is set to true', () => {

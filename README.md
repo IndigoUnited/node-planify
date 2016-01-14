@@ -26,7 +26,6 @@ Ever wanted to write a simple CLI that run a series of tasks with beautiful outp
 
 ## Usage
 
-
 The API is very simple, yet very powerful:
 
 ```js
