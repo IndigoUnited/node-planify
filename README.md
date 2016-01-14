@@ -14,7 +14,7 @@
 [david-dm-dev-url]:https://david-dm.org/IndigoUnited/node-planify#info=devDependencies
 [david-dm-dev-image]:https://img.shields.io/david/dev/IndigoUnited/node-planify.svg
 
-Plan a series of steps and display their output in a beautiful way.
+Plan a series of concrete steps and display their output in a beautiful way.
 
 Ever wanted to write a simple CLI that run a series of tasks with beautiful output? I did and I always ended up doing a thin wrapper repeatedly. This library provides a concise way to define these tasks while offering a handful of reporters to output the progress in a variety of ways.
 
@@ -123,8 +123,9 @@ Creates a plan with the `given` options.
 
 Available options:
 
-- `reporter`: The reporter to be used which can be a string or a reporter object, defaults to `blocks`
-- `exit`: True to exit automatically after running, defaults to `false`
+- `reporter`: The reporter to be used which can be a string or a reporter object, defaults to `blocks`.
+- `exit`: True to exit automatically after running, defaults to `false`. If the plan fails with an error that has `err.exitCode`, the program will exit with that code.
+
 
 ```js
 const planify = require('planify');
@@ -140,9 +141,9 @@ As show above, `fn` may return a promise or use callbacks to do asynchronous stu
 
 Available options:
 
-- `fatal`: False to continue executing if this step fails, defaults to `true`
-- `mute`: True to mute stdout and stderr completely during the execution of this step independently of the reporter being used , defaults to `false`; stdout and stderr can be muted independently by passing an object, e.g.: `{ stdout: true, stderr: false }`
-- `slow`: Amount of time in ms to consider this step slow, defaults to `200`
+- `fatal`: False to continue executing if this step fails, defaults to `true`.
+- `mute`: True to mute stdout and stderr completely during the execution of this step independently of the reporter being used , defaults to `false`; stdout and stderr can be muted independently by passing an object, e.g.: `{ stdout: true, stderr: false }`.
+- `slow`: Amount of time in ms to consider this step slow, defaults to `200`.
 
 
 ```js
@@ -196,7 +197,7 @@ plan.step('Some cool step', (data) => {
 plan.run({ initial: 'data' })
 .then(() => process.exit(0), () => process.exit(1));
 
-// or..
+// or you may use callback style
 plan.run({ initial: 'data' }, (err) => {
     process.exit(err ? 1 : 0);
 });
