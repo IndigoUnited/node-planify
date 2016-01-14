@@ -5,8 +5,8 @@ step.visit
 
 [7m[31m ERROR [39m[27m
 [31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[39m
-  ESOMECODE - Fail with detail
+ESOMECODE - Fail with detail
 
-  This is something that will also be printed.
-  It actually supports multi-line.
+This is something that will also be printed.
+It actually supports multi-line.
 [?25h

@@ -72,7 +72,7 @@ function reporter(options) {
                     str += err.detail + '\n';
                 }
 
-                stdout(indentString(str, '  ', step.depth + 1));
+                stdout(indentString(str, '  ', step.depth));
             },
         },
     };
