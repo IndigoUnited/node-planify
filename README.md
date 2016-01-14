@@ -142,7 +142,7 @@ As show above, `fn` may return a promise or use callbacks to do asynchronous stu
 Available options:
 
 - `fatal`: False to continue executing if this step fails, defaults to `true`
-- `mute`: True to mute stdout and stderr completely during the execution of this step independently of the reporter being used , defaults to `false`
+- `mute`: True to mute stdout and stderr completely during the execution of this step independently of the reporter being used , defaults to `false`; stdout and stderr can be muted independently by passing an object, e.g.: `{ stdout: true, stderr: false }`
 - `slow`: Amount of time in ms to consider this step slow, defaults to `200`
 
 

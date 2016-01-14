@@ -22,12 +22,12 @@ function reporter(options) {
         stdout: process.stdout,
     }, options);
 
-    // Need to grab references to the write methods because of step.write.* methods
-    const stdout = options.stdout.write.bind(options.stdout);
+    let stdout;  // Need to grab references to the write methods because of step.write.* methods
 
     return {
         plan: {
             start() {
+                stdout = options.stdout.write.bind(options.stdout);
                 stdout(ansiEscapes.cursorHide);
             },
             ok(plan) {

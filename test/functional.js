@@ -85,7 +85,7 @@ describe('functional', () => {
             const step = plan.getNode().children[0];
 
             expect(step.type).to.equal('step');
-            expect(step.options.mute).to.equal(true);
+            expect(step.options.mute).to.eql({ stdout: true, stderr: true });
             expect(step.options.slow).to.equal(10000);
         });
 
@@ -374,33 +374,93 @@ describe('functional', () => {
             });
         });
 
-        it('should mute stdout/stderr if options.mute is true', () => {
-            let called = false;
-            const reporter = {
-                step: {
-                    write: {
-                        stdout() { called = true; },
-                        stderr() { called = true; },
+        describe('options.mute', () => {
+            function testMuteOption(options) {
+                const called = { stdout: false, stderr: false };
+                const reporter = {
+                    step: {
+                        write: {
+                            stdout() { called.stdout = true; },
+                            stderr() { called.stderr = true; },
+                        },
                     },
-                },
-            };
+                };
 
-            const buffered = bufferStdio.start();
+                return planify({ reporter })
+                .step('step 1', options, () => {
+                    console.log('write to stdout');
+                    console.error('write to stderr');
+                    process.stdout.write('write to stdout\n');
+                    process.stderr.write('write to stderr\n');
+                })
+                .run()
+                .finally(() => {
+                    bufferStdio.finish();
+                })
+                .return(called);
+            }
 
-            return planify({ reporter })
-            .step('step 1', { mute: true }, () => {
-                console.log('write to stdout');
-                console.error('write to stderr');
-                process.stdout.write('write to stdout\n');
-                process.stderr.write('write to stderr\n');
-            })
-            .run()
-            .finally(() => {
-                bufferStdio.finish();
-            })
-            .then(() => {
-                expect(called).to.equal(false);
-                expect(buffered).to.eql({ stdout: '', stderr: '' });
+            it('should mute stdout & stderr if both are set to true', () => {
+                return testMuteOption({ mute: true })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: false, stderr: false });
+
+                    return testMuteOption({ mute: { stdout: true, stderr: true } });
+                })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: false, stderr: false });
+                });
+            });
+
+            it('should NOT mute stdout & stderr if both are set to falsy', () => {
+                return testMuteOption({ mute: false })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: true, stderr: true });
+
+                    return testMuteOption({ mute: null });
+                })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: true, stderr: true });
+
+                    return testMuteOption({ mute: { stdout: null, stderr: undefined } });
+                })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: true, stderr: true });
+
+                    return testMuteOption({ mute: { stdout: null, stderr: undefined } });
+                })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: true, stderr: true });
+
+                    return testMuteOption();
+                })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: true, stderr: true });
+                });
+            });
+
+            it('should only mute stdout if only options.mute.stdout is true', () => {
+                return testMuteOption({ mute: { stdout: true, stderr: false } })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: false, stderr: true });
+
+                    return testMuteOption({ mute: { stdout: true, stderr: null } });
+                })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: false, stderr: true });
+                });
+            });
+
+            it('should only mute stderr if only options.mute.stderr is true', () => {
+                return testMuteOption({ mute: { stdout: false, stderr: true } })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: true, stderr: false });
+
+                    return testMuteOption({ mute: { stdout: null, stderr: true } });
+                })
+                .then((called) => {
+                    expect(called).to.eql({ stdout: true, stderr: false });
+                });
             });
         });
     });

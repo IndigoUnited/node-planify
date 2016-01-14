@@ -10,7 +10,10 @@
       "label": "Single step",
       "depth": 0,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": true,
         "slow": 200
       }

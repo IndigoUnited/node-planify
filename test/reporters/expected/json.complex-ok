@@ -10,7 +10,10 @@
       "label": "Step 1 - Sync",
       "depth": 0,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": true,
         "slow": 200
       }
@@ -20,7 +23,10 @@
       "label": "Step 2 - Promise",
       "depth": 0,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": true,
         "slow": 200
       }
@@ -30,7 +36,10 @@
       "label": "Step 3 - Callback",
       "depth": 0,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": true,
         "slow": 200
       }
@@ -45,7 +54,10 @@
       "label": "Step 4 - Promise",
       "depth": 1,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": true,
         "slow": 200
       }
@@ -60,7 +72,10 @@
       "label": "Step 5 - Sync",
       "depth": 2,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": false,
         "slow": 200
       }
@@ -75,7 +90,10 @@
       "label": "Step 6 - Sync",
       "depth": 1,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": true,
         "slow": 200
       }
@@ -85,7 +103,10 @@
       "label": "Step 7 - Sync",
       "depth": 0,
       "options": {
-        "mute": false,
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
         "fatal": true,
         "slow": 200
       }
