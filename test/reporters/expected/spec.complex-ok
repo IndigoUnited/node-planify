@@ -2,12 +2,12 @@
   [36m-[39m  [90mStep 1 - Sync[39m
 [1A[2K[1000D  [32m✓[39m  [90mStep 1 - Sync[39m
   [36m-[39m  [90mStep 2 - Promise[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 2 - Promise[39m[33m (105ms)[39m
+[1A[2K[1000D  [32m✓[39m  [90mStep 2 - Promise[39m
   [36m-[39m  [90mStep 3 - Callback[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 3 - Callback[39m[33m (102ms)[39m
+[1A[2K[1000D  [32m✓[39m  [90mStep 3 - Callback[39m[31m (206ms)[39m
   Phase 1
     [36m-[39m  [90mStep 4 - Promise[39m
-[1A[2K[1000D    [32m✓[39m  [90mStep 4 - Promise[39m
+[1A[2K[1000D    [32m✓[39m  [90mStep 4 - Promise[39m[33m (104ms)[39m
     Phase 1.1
       [36m-[39m  [90mStep 5 - Sync[39m
 [1A[2K[1000D      [31m✖[39m  [90mStep 5 - Sync[39m
@@ -17,6 +17,6 @@
   [36m-[39m  [90mStep 7 - Sync[39m
 [1A[2K[1000D  [32m✓[39m  [90mStep 7 - Sync[39m
 
-  7 steps ok [90m(314ms)[39m
+  7 steps ok [90m(335ms)[39m
 
 [?25h

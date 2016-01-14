@@ -1,11 +1,11 @@
 {
   "refs": {
-    "1z7lztwwc6n4o": {
+    "1lyl5jq2dgao4": {
       "type": "plan",
       "label": "Plan",
       "depth": -1
     },
-    "lazhsj2nqts8": {
+    "1wogobn4glmos": {
       "type": "step",
       "label": "Single step",
       "depth": 0,
@@ -22,59 +22,59 @@
   "actions": [
     {
       "name": "plan.start",
-      "ref": "1z7lztwwc6n4o"
+      "ref": "1lyl5jq2dgao4"
     },
     {
       "name": "step.start",
-      "ref": "lazhsj2nqts8"
+      "ref": "1wogobn4glmos"
     },
     {
       "name": "step.write.stdout",
-      "ref": "lazhsj2nqts8",
+      "ref": "1wogobn4glmos",
       "str": "foo\n"
     },
     {
       "name": "step.write.stderr",
-      "ref": "lazhsj2nqts8",
+      "ref": "1wogobn4glmos",
       "str": "bar\n"
     },
     {
       "name": "step.ok",
-      "ref": "lazhsj2nqts8",
+      "ref": "1wogobn4glmos",
       "info": {
-        "startedAt": 1452616432220,
-        "finishedAt": 1452616432221,
-        "duration": 1,
+        "startedAt": 1452737773077,
+        "finishedAt": 1452737773077,
+        "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "lazhsj2nqts8",
+      "ref": "1wogobn4glmos",
       "info": {
-        "startedAt": 1452616432220,
-        "finishedAt": 1452616432221,
-        "duration": 1,
+        "startedAt": 1452737773077,
+        "finishedAt": 1452737773077,
+        "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "plan.ok",
-      "ref": "1z7lztwwc6n4o",
+      "ref": "1lyl5jq2dgao4",
       "info": {
-        "startedAt": 1452616432220,
-        "finishedAt": 1452616432222,
-        "duration": 2,
+        "startedAt": 1452737773077,
+        "finishedAt": 1452737773078,
+        "duration": 1,
         "speed": "fast"
       }
     },
     {
       "name": "plan.finish",
-      "ref": "1z7lztwwc6n4o",
+      "ref": "1lyl5jq2dgao4",
       "info": {
-        "startedAt": 1452616432220,
-        "finishedAt": 1452616432222,
-        "duration": 2,
+        "startedAt": 1452737773077,
+        "finishedAt": 1452737773078,
+        "duration": 1,
         "speed": "fast"
       }
     }

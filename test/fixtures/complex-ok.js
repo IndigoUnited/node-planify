@@ -11,7 +11,7 @@ function build(options) {
     .step('Step 2 - Promise', () => {
         console.log('step-2.enter');
 
-        return Promise.delay(100)
+        return Promise.delay(10)
         .then(() => {
             console.log('step-2.leave');
         });
@@ -22,13 +22,13 @@ function build(options) {
         setTimeout(() => {
             console.log('step-3.leave');
             done();
-        }, 100);
+        }, 201);
     })
     .phase('Phase 1', (phase) => {
         phase.step('Step 4 - Promise', () => {
             console.log('step-4.enter');
 
-            return Promise.delay(50)
+            return Promise.delay(101)
             .then(() => {
                 console.log('step-4.leave');
             });
@@ -49,7 +49,7 @@ function build(options) {
             setTimeout(() => {
                 console.log('step-6.leave');
                 done();
-            }, 50);
+            }, 10);
         });
     })
     .step('Step 7 - Sync', () => {
