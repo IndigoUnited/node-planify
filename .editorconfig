@@ -11,5 +11,9 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[package.json]
+[test/reporters/expected/*]
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+[package.json,test/reporters/expected/json.*]
 indent_size = 2
