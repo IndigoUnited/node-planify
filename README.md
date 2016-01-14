@@ -84,7 +84,7 @@ The are several built-in reporters:
 - `json`: json reporter outputs a machine readable object with all the plan lifecycle events.
 - `silent`: silent reporter which simply outputs nothing.
 
-You can easily make your own reporter. Take a look at the [`json`](./reporters/json.js) reporter implementation for an example. Anyway, here's a simple example:
+You can easily make your own reporter. Take a look at the [`json`](./reporters/json.js) reporter implementation for an example. You may use a custom reporter like this:
 
 ```js
 // my-reporter.js
@@ -111,7 +111,7 @@ const plan = planify({
 /* ... */
 ```
 
-One cool feature of the reporters is that they can be async. You may return promises or use callbacks to do async reporting (.e.g.: save stuff to a database);
+One cool feature of the reporters is that they can be async. You may return promises or use callbacks to do async reporting (.e.g.: save stuff to a database).
 
 Feel free to make a PR to add your reporter to the built-in reporters.
 
