@@ -65,7 +65,7 @@ function reporter(options) {
             fail(step, err) {
                 stdout(label('ERROR', step.depth, 'red'));
 
-                let str = err.message + '\n';
+                let str = (err.code ? err.code + ' - ' : '') + err.message + '\n';
 
                 if (typeof err.detail === 'string') {
                     str += '\n';
