@@ -83,7 +83,7 @@ The are several built-in reporters:
 - `json`: json reporter outputs a machine readable object with all the plan lifecycle events.
 - `silent`: silent reporter which simply outputs nothing.
 
-You can easily make your own reporter. Take a look at the [`json`](./reporters/json.js) reporter implementation for an example. You may use a custom reporter like this:
+You can easily make your own reporter. Take a look at the [json](./reporters/json.js) reporter implementation for an example. You may use a custom reporter like this:
 
 ```js
 // my-reporter.js
