@@ -8,7 +8,7 @@ function fillReferences(refs, node) {
     let ref;
 
     do {
-        ref = (Math.random() * 10000000000000000000).toString(36);
+        ref = (Math.random() * Math.pow(10, 20)).toString(36);
     } while (refs[ref]);
 
     node.ref = ref;
