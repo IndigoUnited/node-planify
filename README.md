@@ -132,7 +132,7 @@ const planify = require('planify');
 const plan = planify({ exit: true, reporter: 'spec' });
 ```
 
-### .step(label, [options], fn)
+#### .step(label, [options], fn)
 
 Adds a step with `label`, executing `fn` when it's time for the step to run.
 
@@ -162,7 +162,7 @@ plan.step('Some cool step', { slow: 500 }, (data, done) => {
 });
 ```
 
-### .phase(label, fn)
+#### .phase(label, fn)
 
 Adds a phase with `label` to the plan, executing `fn` with a `phase` object to define the phase plan.
 
@@ -179,7 +179,7 @@ plan.phase('Phase 1', (phase) => {
 });
 ```
 
-### .run([data])
+#### .run([data])
 
 Runs the plan.
 Returns a promise that will be resolved when the plan succeeds or rejected if any of the steps failed.
@@ -203,13 +203,56 @@ plan.run({ initial: 'data' }, (err) => {
 });
 ```
 
-### .getReporter()
+#### .getReporter()
 
 Returns the configured reporter.
 
-### .getNode()
+#### .getNode()
 
 Returns the plan node, giving access to the plan tree. Use this at your own risk.
+
+
+### Caveats
+
+`planify` hooks into `process.stdout.write` and `process.stderr.write` to allow reporters to style or mute output done inside steps.
+Thought, it's impossible to do that when using `child_process#spawn` or `child_process#exec` with `options.stdio` set to `inherit`. Please avoid it and listen to `data` events from stdout and stderr instead:
+
+```js
+// Example using child_process#pawn
+const spawn = require('cross-spawn-async');
+const planify = require('planify');
+
+planify({ exit: true })
+.step('Executing npm install', (done) => {
+    const npm = spawn('npm', ['install']);  // Use cross-spawn to make this work on Windows
+
+    npm.stdout.on('data', (buffer) => process.stdout.write(buffer));
+    npm.stderr.on('data', (buffer) => process.stderr.write(buffer));
+
+    npm.on('error', done);
+    npm.on('exit', (code) => {
+        done(code ? new Error('npm exited with code ' + code) : null);
+    });
+})
+.run();
+```
+
+```js
+// Example using child_process#exec
+const cp = require('child_process');
+const planify = require('planify');
+
+planify({ exit: true })
+.step('Executing npm install', (done) => {
+    // Note that output is buffered :(
+    cp.exec('npm install', (err, stdout, stderr) => {
+        stdout && process.stdout.write(stdout);
+        stderr && process.stderr.write(stderr);
+        done(err);
+    });
+})
+.run();
+```
 
 
 ## Tests
