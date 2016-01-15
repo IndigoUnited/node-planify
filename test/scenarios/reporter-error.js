@@ -111,6 +111,9 @@ it('should run scenarios/reporter-error, verifying if the step errors are more i
     let reporterCalls = 0;
     let reporter;
 
+    // -------------------------------------
+    // Plan
+    // -------------------------------------
     reporter = {
         plan: {
             fail() {
@@ -128,7 +131,11 @@ it('should run scenarios/reporter-error, verifying if the step errors are more i
         expect(err).to.be.an.instanceOf(Error);
         expect(err.message).to.equal('Will NOT be ignored');
         expect(reporterCalls).to.equal(1);
-
+    })
+    // -------------------------------------
+    // Phase
+    // -------------------------------------
+    .then(() => {
         reporterCalls = 0;
         reporter = {
             phase: {
@@ -148,7 +155,11 @@ it('should run scenarios/reporter-error, verifying if the step errors are more i
         expect(err).to.be.an.instanceOf(Error);
         expect(err.message).to.equal('Will NOT be ignored');
         expect(reporterCalls).to.equal(2);
-
+    })
+    // -------------------------------------
+    // Step
+    // -------------------------------------
+    .then(() => {
         reporterCalls = 0;
         reporter = {
             step: {
