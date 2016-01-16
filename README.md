@@ -56,7 +56,7 @@ planify({ reporter: 'blocks' })  // 'blocks' is the default reporter
 .then(() => process.exit(), (err) => process.exit(1));
 ```
 
-You can build nested phases as many times as you wish. API is chainable to make it easier to build your plan.
+You can build as many nested phases as you wish. API is chainable to make it easier to build your plan.
 
 Running this would look like this:
 
@@ -218,7 +218,7 @@ Returns the plan node, giving access to the plan tree. Use this at your own risk
 Thought, it's impossible to do that when using `child_process#spawn` or `child_process#exec` with `options.stdio` set to `inherit`. Please avoid it and listen to `data` events from stdout and stderr instead:
 
 ```js
-// Example using child_process#pawn
+// Example using child_process#spawn
 const spawn = require('cross-spawn-async');
 const planify = require('planify');
 
