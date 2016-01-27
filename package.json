@@ -48,7 +48,7 @@
     "expect.js": "^0.3.1",
     "glob": "^6.0.4",
     "istanbul": "^0.4.1",
-    "mocha": "^2.3.4",
+    "mocha": "^2.4.4",
     "require-directory": "^2.1.1"
   },
   "engines": {
