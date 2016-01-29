@@ -40,7 +40,7 @@
     "@satazor/eslint-config": "^1.0.6",
     "babel-plugin-transform-react-constant-elements": "^6.4.0",
     "babel-plugin-transform-react-inline-elements": "^6.4.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.1.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.2.1",
     "babel-preset-stage-2": "^6.3.13",
     "chai": "^3.4.1",
     "cli-character-set": "^0.1.0",
