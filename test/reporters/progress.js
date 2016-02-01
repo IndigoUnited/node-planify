@@ -26,10 +26,23 @@ function normalize(str) {
     symbolsReplacers.forEach((replacer) => {
         str = str.replace(replacer.regExp, replacer.replacement);
     });
+
+    return str;
 }
 
 const expectations = expected.expectations('progress');
 
 describe('progress', () => {
+    let originalColumns;
+
+    before(() => {
+        originalColumns = process.stdout.columns;
+        process.stdout.columns = 80;
+    });
+
+    after(() => {
+        process.stdout.columns = originalColumns;
+    });
+
     expected.test(expectations, normalize);
 });
