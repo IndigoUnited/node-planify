@@ -2,22 +2,28 @@
 
 const chalk = require('chalk');
 const ansiEscapes = require('ansi-escapes');
-const sequence = ['|', '/', '-', '\\'];
-let index = 0;
 
-function printSequence(isError) {
+const sequence = ['|', '/', '-', '\\'];
+
+function printSequence(index, isError) {
     index = (index < sequence.length - 1) ? index + 1 : 0;
 
     const str = isError ? chalk.bold.yellow(sequence[index]) : chalk.bold.green(sequence[index]);
 
     process.stdout.write(ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
     process.stdout.write(str);
+
+    return index;
 }
 
 function reporter() {
+    let index;
+
     return {
         plan: {
             start() {
+                index = 0;
+
                 const str = chalk.bold.green(sequence[index]);
 
                 process.stdout.write(ansiEscapes.cursorHide);
@@ -50,10 +56,10 @@ function reporter() {
 
         step: {
             ok() {
-                printSequence();
+                index = printSequence(index);
             },
             fail() {
-                printSequence(true);
+                index = printSequence(index, true);
             },
         },
     };
