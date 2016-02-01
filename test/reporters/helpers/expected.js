@@ -49,12 +49,15 @@ function expectations(reporter) {
 function test(expectations, normalizer) {
     let key;
 
+    normalizer = normalizer || ((str) => str);
+
     for (key in expectations) {
         const expectation = expectations[key];
 
         it('should give the correct output for fixtures/' + expectation.name, () => {
             return expectation.run()
             .spread((buffered, expected) => {
+                // Uncomment line below to generate expected files output
                 // fs.writeFileSync(expectation.file, buffered.stdout);
                 expect(normalizer(buffered.stdout)).to.equal(normalizer(expected));
                 expect(buffered.stderr).to.equal('');

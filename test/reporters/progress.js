@@ -1,7 +1,7 @@
 'use strict';
 
 const forIn = require('lodash/forIn');
-const cliPogressBarThemes = require('cli-progress-bar/themes');
+const cliProgressBarThemes = require('cli-progress-bar/themes');
 const cliCharacterSet = require('cli-character-set')();
 const expected = require('./helpers/expected');
 const normalizers = require('./helpers/normalizers');
@@ -9,8 +9,8 @@ const normalizers = require('./helpers/normalizers');
 const symbolsReplacers = [];
 
 if (cliCharacterSet !== 'unicode') {
-    forIn(cliPogressBarThemes[cliCharacterSet], (symbol, name) => {
-        const swappedSymbol = cliPogressBarThemes.unicode[name];
+    forIn(cliProgressBarThemes[cliCharacterSet], (symbol, name) => {
+        const swappedSymbol = cliProgressBarThemes.unicode[name];
 
         symbolsReplacers.push({
             regExp: new RegExp(symbol, 'g'),
@@ -26,6 +26,8 @@ function normalize(str) {
     symbolsReplacers.forEach((replacer) => {
         str = str.replace(replacer.regExp, replacer.replacement);
     });
+
+    return str;
 }
 
 const expectations = expected.expectations('progress');
