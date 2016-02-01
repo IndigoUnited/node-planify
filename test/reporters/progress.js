@@ -33,5 +33,16 @@ function normalize(str) {
 const expectations = expected.expectations('progress');
 
 describe('progress', () => {
+    let originalColumns;
+
+    before(() => {
+        originalColumns = process.stdout.columns;
+        process.stdout.columns = 80;
+    });
+
+    after(() => {
+        process.stdout.columns = originalColumns;
+    });
+
     expected.test(expectations, normalize);
 });
