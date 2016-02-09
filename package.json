@@ -41,7 +41,6 @@
     "chai": "^3.4.1",
     "cli-character-set": "^0.1.0",
     "coveralls": "^2.11.6",
-    "expect.js": "^0.3.1",
     "glob": "^6.0.4",
     "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
