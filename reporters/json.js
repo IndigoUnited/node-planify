@@ -37,13 +37,12 @@ function reporter(options) {
     }, options);
 
     let stdout;  // Need to grab references to the write methods because of step.write.* methods
-    let refs;
 
     return {
         plan: {
             start(plan) {
                 stdout = options.stdout.write.bind(options.stdout);
-                refs = fillReferences({}, plan);
+                const refs = fillReferences({}, plan);
 
                 stdout('{\n');
                 stdout('  "refs": {\n');

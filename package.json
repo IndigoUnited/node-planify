@@ -4,6 +4,7 @@
   "description": "Plan a series of steps and display the output in a beautiful way",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint **/*.js --ignore-pattern=test/coverage",
     "test": "mocha --bail",
     "test-cov": "istanbul cover --dir test/coverage _mocha -- --bail && echo Coverage lies in test/coverage/lcov-report/index.html",
     "test-travis": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --bail && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
@@ -37,10 +38,11 @@
     "lodash": "^4.5.0"
   },
   "devDependencies": {
-    "@satazor/eslint-config": "^1.0.6",
+    "@satazor/eslint-config": "^2.0.0",
     "chai": "^3.4.1",
     "cli-character-set": "^0.1.0",
     "coveralls": "^2.11.6",
+    "eslint": "^2.2.0",
     "glob": "^7.0.0",
     "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
