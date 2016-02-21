@@ -6,9 +6,9 @@
 [downloads-image]:http://img.shields.io/npm/dm/planify.svg
 [npm-image]:http://img.shields.io/npm/v/planify.svg
 [travis-url]:https://travis-ci.org/IndigoUnited/node-planify
-[travis-image]:http://img.shields.io/travis/IndigoUnited/node-planify.svg
+[travis-image]:http://img.shields.io/travis/IndigoUnited/node-planify/master.svg
 [coveralls-url]:https://coveralls.io/r/IndigoUnited/node-planify
-[coveralls-image]:https://img.shields.io/coveralls/IndigoUnited/node-planify.svg
+[coveralls-image]:https://img.shields.io/coveralls/IndigoUnited/node-planify/master.svg
 [david-dm-url]:https://david-dm.org/IndigoUnited/node-planify
 [david-dm-image]:https://img.shields.io/david/IndigoUnited/node-planify.svg
 [david-dm-dev-url]:https://david-dm.org/IndigoUnited/node-planify#info=devDependencies
