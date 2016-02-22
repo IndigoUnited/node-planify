@@ -33,9 +33,8 @@ function setupReporter(reporter) {
 
 function onNotification(reporter, node, action) {
     const reporterFn = get(reporter, node.type + '.' + action);
-    let args;
+    const args = Array.from(arguments).slice(3);
 
-    args = Array.from(arguments).slice(3);
     args.unshift(node);
 
     return Promise.resolve(reporterFn && reporterFn.apply(null, args));
