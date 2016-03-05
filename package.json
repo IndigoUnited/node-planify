@@ -43,7 +43,7 @@
     "cli-character-set": "^0.1.0",
     "coveralls": "^2.11.6",
     "eslint": "^2.2.0",
-    "glob": "^7.0.0",
+    "glob": "^7.0.3",
     "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
     "require-directory": "^2.1.1"
