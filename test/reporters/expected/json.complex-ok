@@ -1,11 +1,11 @@
 {
   "refs": {
-    "20dozsuhligw4": {
+    "169new9ql62kg": {
       "type": "plan",
       "label": "Plan",
       "depth": -1
     },
-    "7mx3h7tnd84c": {
+    "b6ud9w3ldmo0c": {
       "type": "step",
       "label": "Step 1 - Sync",
       "depth": 0,
@@ -18,7 +18,7 @@
         "slow": 200
       }
     },
-    "y9hhkhwxkao0": {
+    "1ytzomzx1h8gs": {
       "type": "step",
       "label": "Step 2 - Promise",
       "depth": 0,
@@ -31,7 +31,7 @@
         "slow": 200
       }
     },
-    "62ym6qane9c8": {
+    "54o2zoa9hiwwg": {
       "type": "step",
       "label": "Step 3 - Callback",
       "depth": 0,
@@ -44,12 +44,12 @@
         "slow": 200
       }
     },
-    "t20iugc0ck08": {
+    "h0smdsucjrscg": {
       "type": "phase",
       "label": "Phase 1",
       "depth": 0
     },
-    "j9cgfax2b8ws": {
+    "3doaj5pq5gkkk": {
       "type": "step",
       "label": "Step 4 - Promise",
       "depth": 1,
@@ -62,12 +62,12 @@
         "slow": 200
       }
     },
-    "1a3lw4f4pdswg": {
+    "3rp1nhug40e8g": {
       "type": "phase",
       "label": "Phase 1.1",
       "depth": 1
     },
-    "49m7q7vxbjac": {
+    "g0bgvjtk5fcwc": {
       "type": "step",
       "label": "Step 5 - Sync",
       "depth": 2,
@@ -80,12 +80,12 @@
         "slow": 200
       }
     },
-    "193tkzl0tli8g": {
+    "1iuk1ui9vtz4s": {
       "type": "phase",
       "label": "Phase 2",
       "depth": 0
     },
-    "ha7uhaava20o": {
+    "co7w0el6kvksg": {
       "type": "step",
       "label": "Step 6 - Sync",
       "depth": 1,
@@ -98,9 +98,22 @@
         "slow": 200
       }
     },
-    "18zo5tf5x94w8": {
+    "fqu61k8n0tcks": {
       "type": "step",
-      "label": "Step 7 - Sync",
+      "label": "Step 7 - Multiple writes",
+      "depth": 1,
+      "options": {
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
+        "fatal": true,
+        "slow": 200
+      }
+    },
+    "1wgkixayxnr4s": {
+      "type": "step",
+      "label": "Step 8 - Sync",
       "depth": 0,
       "options": {
         "mute": {
@@ -115,166 +128,166 @@
   "actions": [
     {
       "name": "plan.start",
-      "ref": "20dozsuhligw4"
+      "ref": "169new9ql62kg"
     },
     {
       "name": "step.start",
-      "ref": "7mx3h7tnd84c"
+      "ref": "b6ud9w3ldmo0c"
     },
     {
       "name": "step.write.stdout",
-      "ref": "7mx3h7tnd84c",
+      "ref": "b6ud9w3ldmo0c",
       "str": "step-1.visit\n"
     },
     {
       "name": "step.ok",
-      "ref": "7mx3h7tnd84c",
+      "ref": "b6ud9w3ldmo0c",
       "info": {
-        "startedAt": 1452737773411,
-        "finishedAt": 1452737773411,
-        "duration": 0,
+        "startedAt": 1466289701439,
+        "finishedAt": 1466289701440,
+        "duration": 1,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "7mx3h7tnd84c",
+      "ref": "b6ud9w3ldmo0c",
       "info": {
-        "startedAt": 1452737773411,
-        "finishedAt": 1452737773411,
-        "duration": 0,
+        "startedAt": 1466289701439,
+        "finishedAt": 1466289701440,
+        "duration": 1,
         "speed": "fast"
       }
     },
     {
       "name": "step.start",
-      "ref": "y9hhkhwxkao0"
+      "ref": "1ytzomzx1h8gs"
     },
     {
       "name": "step.write.stdout",
-      "ref": "y9hhkhwxkao0",
+      "ref": "1ytzomzx1h8gs",
       "str": "step-2.enter\n"
     },
     {
       "name": "step.write.stdout",
-      "ref": "y9hhkhwxkao0",
+      "ref": "1ytzomzx1h8gs",
       "str": "step-2.leave\n"
     },
     {
       "name": "step.ok",
-      "ref": "y9hhkhwxkao0",
+      "ref": "1ytzomzx1h8gs",
       "info": {
-        "startedAt": 1452737773411,
-        "finishedAt": 1452737773422,
-        "duration": 11,
+        "startedAt": 1466289701440,
+        "finishedAt": 1466289701453,
+        "duration": 13,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "y9hhkhwxkao0",
+      "ref": "1ytzomzx1h8gs",
       "info": {
-        "startedAt": 1452737773411,
-        "finishedAt": 1452737773422,
-        "duration": 11,
+        "startedAt": 1466289701440,
+        "finishedAt": 1466289701453,
+        "duration": 13,
         "speed": "fast"
       }
     },
     {
       "name": "step.start",
-      "ref": "62ym6qane9c8"
+      "ref": "54o2zoa9hiwwg"
     },
     {
       "name": "step.write.stdout",
-      "ref": "62ym6qane9c8",
+      "ref": "54o2zoa9hiwwg",
       "str": "step-3.enter\n"
     },
     {
       "name": "step.write.stdout",
-      "ref": "62ym6qane9c8",
+      "ref": "54o2zoa9hiwwg",
       "str": "step-3.leave\n"
     },
     {
       "name": "step.ok",
-      "ref": "62ym6qane9c8",
+      "ref": "54o2zoa9hiwwg",
       "info": {
-        "startedAt": 1452737773423,
-        "finishedAt": 1452737773629,
-        "duration": 206,
+        "startedAt": 1466289701453,
+        "finishedAt": 1466289701658,
+        "duration": 205,
         "speed": "slow"
       }
     },
     {
       "name": "step.finish",
-      "ref": "62ym6qane9c8",
+      "ref": "54o2zoa9hiwwg",
       "info": {
-        "startedAt": 1452737773423,
-        "finishedAt": 1452737773629,
-        "duration": 206,
+        "startedAt": 1466289701453,
+        "finishedAt": 1466289701658,
+        "duration": 205,
         "speed": "slow"
       }
     },
     {
       "name": "phase.start",
-      "ref": "t20iugc0ck08"
+      "ref": "h0smdsucjrscg"
     },
     {
       "name": "step.start",
-      "ref": "j9cgfax2b8ws"
+      "ref": "3doaj5pq5gkkk"
     },
     {
       "name": "step.write.stdout",
-      "ref": "j9cgfax2b8ws",
+      "ref": "3doaj5pq5gkkk",
       "str": "step-4.enter\n"
     },
     {
       "name": "step.write.stdout",
-      "ref": "j9cgfax2b8ws",
+      "ref": "3doaj5pq5gkkk",
       "str": "step-4.leave\n"
     },
     {
       "name": "step.ok",
-      "ref": "j9cgfax2b8ws",
+      "ref": "3doaj5pq5gkkk",
       "info": {
-        "startedAt": 1452737773629,
-        "finishedAt": 1452737773730,
-        "duration": 101,
+        "startedAt": 1466289701658,
+        "finishedAt": 1466289701763,
+        "duration": 105,
         "speed": "medium"
       }
     },
     {
       "name": "step.finish",
-      "ref": "j9cgfax2b8ws",
+      "ref": "3doaj5pq5gkkk",
       "info": {
-        "startedAt": 1452737773629,
-        "finishedAt": 1452737773730,
-        "duration": 101,
+        "startedAt": 1466289701658,
+        "finishedAt": 1466289701763,
+        "duration": 105,
         "speed": "medium"
       }
     },
     {
       "name": "phase.start",
-      "ref": "1a3lw4f4pdswg"
+      "ref": "3rp1nhug40e8g"
     },
     {
       "name": "step.start",
-      "ref": "49m7q7vxbjac"
+      "ref": "g0bgvjtk5fcwc"
     },
     {
       "name": "step.write.stdout",
-      "ref": "49m7q7vxbjac",
+      "ref": "g0bgvjtk5fcwc",
       "str": "step-5.visit\n"
     },
     {
       "name": "step.write.stderr",
-      "ref": "49m7q7vxbjac",
+      "ref": "g0bgvjtk5fcwc",
       "str": "Will throw an error\n"
     },
     {
       "name": "step.fail",
-      "ref": "49m7q7vxbjac",
+      "ref": "g0bgvjtk5fcwc",
       "info": {
-        "startedAt": 1452737773731,
+        "startedAt": 1466289701764,
         "error": {
           "message": "Will be ignored"
         }
@@ -282,9 +295,9 @@
     },
     {
       "name": "step.finish",
-      "ref": "49m7q7vxbjac",
+      "ref": "g0bgvjtk5fcwc",
       "info": {
-        "startedAt": 1452737773731,
+        "startedAt": 1466289701764,
         "error": {
           "message": "Will be ignored"
         }
@@ -292,148 +305,197 @@
     },
     {
       "name": "phase.ok",
-      "ref": "1a3lw4f4pdswg",
+      "ref": "3rp1nhug40e8g",
       "info": {
-        "startedAt": 1452737773731,
-        "finishedAt": 1452737773731,
+        "startedAt": 1466289701764,
+        "finishedAt": 1466289701764,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "phase.finish",
-      "ref": "1a3lw4f4pdswg",
+      "ref": "3rp1nhug40e8g",
       "info": {
-        "startedAt": 1452737773731,
-        "finishedAt": 1452737773731,
+        "startedAt": 1466289701764,
+        "finishedAt": 1466289701764,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "phase.ok",
-      "ref": "t20iugc0ck08",
+      "ref": "h0smdsucjrscg",
       "info": {
-        "startedAt": 1452737773629,
-        "finishedAt": 1452737773732,
-        "duration": 103,
+        "startedAt": 1466289701658,
+        "finishedAt": 1466289701764,
+        "duration": 106,
         "speed": "fast"
       }
     },
     {
       "name": "phase.finish",
-      "ref": "t20iugc0ck08",
+      "ref": "h0smdsucjrscg",
       "info": {
-        "startedAt": 1452737773629,
-        "finishedAt": 1452737773732,
-        "duration": 103,
+        "startedAt": 1466289701658,
+        "finishedAt": 1466289701764,
+        "duration": 106,
         "speed": "fast"
       }
     },
     {
       "name": "phase.start",
-      "ref": "193tkzl0tli8g"
+      "ref": "1iuk1ui9vtz4s"
     },
     {
       "name": "step.start",
-      "ref": "ha7uhaava20o"
+      "ref": "co7w0el6kvksg"
     },
     {
       "name": "step.write.stdout",
-      "ref": "ha7uhaava20o",
+      "ref": "co7w0el6kvksg",
       "str": "step-6.enter\n"
     },
     {
       "name": "step.write.stdout",
-      "ref": "ha7uhaava20o",
+      "ref": "co7w0el6kvksg",
       "str": "step-6.leave\n"
     },
     {
       "name": "step.ok",
-      "ref": "ha7uhaava20o",
+      "ref": "co7w0el6kvksg",
       "info": {
-        "startedAt": 1452737773732,
-        "finishedAt": 1452737773742,
-        "duration": 10,
+        "startedAt": 1466289701764,
+        "finishedAt": 1466289701776,
+        "duration": 12,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "ha7uhaava20o",
+      "ref": "co7w0el6kvksg",
       "info": {
-        "startedAt": 1452737773732,
-        "finishedAt": 1452737773742,
-        "duration": 10,
-        "speed": "fast"
-      }
-    },
-    {
-      "name": "phase.ok",
-      "ref": "193tkzl0tli8g",
-      "info": {
-        "startedAt": 1452737773732,
-        "finishedAt": 1452737773743,
-        "duration": 11,
-        "speed": "fast"
-      }
-    },
-    {
-      "name": "phase.finish",
-      "ref": "193tkzl0tli8g",
-      "info": {
-        "startedAt": 1452737773732,
-        "finishedAt": 1452737773743,
-        "duration": 11,
+        "startedAt": 1466289701764,
+        "finishedAt": 1466289701776,
+        "duration": 12,
         "speed": "fast"
       }
     },
     {
       "name": "step.start",
-      "ref": "18zo5tf5x94w8"
+      "ref": "fqu61k8n0tcks"
     },
     {
       "name": "step.write.stdout",
-      "ref": "18zo5tf5x94w8",
+      "ref": "fqu61k8n0tcks",
       "str": "step-7.visit\n"
     },
     {
+      "name": "step.write.stdout",
+      "ref": "fqu61k8n0tcks",
+      "str": "foo\nbar"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "fqu61k8n0tcks",
+      "str": "baz\nhello\n"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "fqu61k8n0tcks",
+      "str": "there"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "fqu61k8n0tcks",
+      "str": "\n"
+    },
+    {
       "name": "step.ok",
-      "ref": "18zo5tf5x94w8",
+      "ref": "fqu61k8n0tcks",
       "info": {
-        "startedAt": 1452737773743,
-        "finishedAt": 1452737773743,
+        "startedAt": 1466289701776,
+        "finishedAt": 1466289701776,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "18zo5tf5x94w8",
+      "ref": "fqu61k8n0tcks",
       "info": {
-        "startedAt": 1452737773743,
-        "finishedAt": 1452737773743,
+        "startedAt": 1466289701776,
+        "finishedAt": 1466289701776,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.ok",
+      "ref": "1iuk1ui9vtz4s",
+      "info": {
+        "startedAt": 1466289701764,
+        "finishedAt": 1466289701777,
+        "duration": 13,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "phase.finish",
+      "ref": "1iuk1ui9vtz4s",
+      "info": {
+        "startedAt": 1466289701764,
+        "finishedAt": 1466289701777,
+        "duration": 13,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.start",
+      "ref": "1wgkixayxnr4s"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "1wgkixayxnr4s",
+      "str": "step-8.visit\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "1wgkixayxnr4s",
+      "info": {
+        "startedAt": 1466289701777,
+        "finishedAt": 1466289701777,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "1wgkixayxnr4s",
+      "info": {
+        "startedAt": 1466289701777,
+        "finishedAt": 1466289701777,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "plan.ok",
-      "ref": "20dozsuhligw4",
+      "ref": "169new9ql62kg",
       "info": {
-        "startedAt": 1452737773411,
-        "finishedAt": 1452737773743,
-        "duration": 332,
+        "startedAt": 1466289701439,
+        "finishedAt": 1466289701777,
+        "duration": 338,
         "speed": "fast"
       }
     },
     {
       "name": "plan.finish",
-      "ref": "20dozsuhligw4",
+      "ref": "169new9ql62kg",
       "info": {
-        "startedAt": 1452737773411,
-        "finishedAt": 1452737773743,
-        "duration": 332,
+        "startedAt": 1466289701439,
+        "finishedAt": 1466289701777,
+        "duration": 338,
         "speed": "fast"
       }
     }

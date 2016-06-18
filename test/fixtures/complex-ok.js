@@ -51,9 +51,17 @@ function build(options) {
                 done();
             }, 10);
         });
+
+        phase.step('Step 7 - Multiple writes', () => {
+            console.log('step-7.visit');
+            process.stdout.write('foo\nbar');
+            process.stdout.write('baz\nhello\n');
+            process.stdout.write('there');
+            process.stdout.write('\n');
+        });
     })
-    .step('Step 7 - Sync', () => {
-        console.log('step-7.visit');
+    .step('Step 8 - Sync', () => {
+        console.log('step-8.visit');
     });
 }
 

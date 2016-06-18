@@ -84,6 +84,8 @@ The are several built-in reporters:
 - `silent`: silent reporter which simply outputs nothing.
 - `spinner`: a simple reporter which prints errors or a spinner when the process is running.
 
+*NOTE*: Some reporters will auto-indent output unless when doing [prompting](https://nodejs.org/api/readline.html).
+
 You can easily make your own reporter. Take a look at the [json](./reporters/json.js) reporter implementation for an example. You may use a custom reporter like this:
 
 ```js

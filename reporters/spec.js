@@ -2,15 +2,17 @@
 
 const chalk = require('chalk');
 const assign = require('lodash/assign');
-const indentString = require('indent-string');
 const ansiEscapes = require('ansi-escapes');
 const duration = require('./util/duration');
 const symbols = require('./util/symbols');
+const indenter = require('./util/indenter');
 
 function reporter(options) {
     options = assign({
         stdout: process.stdout,
     }, options);
+
+    const indent = indenter();
 
     return {
         plan: {
@@ -25,7 +27,7 @@ function reporter(options) {
                 str += plan.steps.length + ' step' + (plan.steps.length === 1 ? '' : 's') + ' ok';
                 str += ' ' + duration(plan, '(%s)') + '\n';
 
-                options.stdout.write(indentString(str, '  ', 1));
+                options.stdout.write(indent(str, 1));
             },
             fail(plan, err) {
                 let str;
@@ -49,7 +51,7 @@ function reporter(options) {
 
         phase: {
             start(phase) {
-                options.stdout.write(indentString(phase.label, '  ', phase.depth + 1) + '\n');
+                options.stdout.write(indent(phase.label + '\n', phase.depth + 1));
             },
         },
 
@@ -57,7 +59,7 @@ function reporter(options) {
             start(step) {
                 const str = chalk.cyan(symbols.run) + '  ' + chalk.gray(step.label) + '\n';
 
-                options.stdout.write(indentString(str, '  ', step.depth + 1));
+                options.stdout.write(indent(str, step.depth + 1));
             },
             ok(step) {
                 let str;
@@ -66,13 +68,13 @@ function reporter(options) {
                 str += (step.info.speed !== 'fast' ? duration(step, ' (%s)') : '') + '\n';
 
                 options.stdout.write(ansiEscapes.cursorUp() + ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
-                options.stdout.write(indentString(str, '  ', step.depth + 1));
+                options.stdout.write(indent(str, step.depth + 1));
             },
             fail(step) {
                 const str = chalk.red(symbols.fail) + '  ' + chalk.gray(step.label) + '\n';
 
                 options.stdout.write(ansiEscapes.cursorUp() + ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
-                options.stdout.write(indentString(str, '  ', step.depth + 1));
+                options.stdout.write(indent(str, step.depth + 1));
             },
         },
     };

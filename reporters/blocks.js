@@ -2,19 +2,19 @@
 
 const chalk = require('chalk');
 const assign = require('lodash/assign');
-const indentString = require('indent-string');
 const ansiEscapes = require('ansi-escapes');
 const duration = require('./util/duration');
 const symbols = require('./util/symbols');
+const indenter = require('./util/indenter');
 
-function label(label, indent, color) {
+function label(label, color, depth) {
     let str;
 
     str = '\n';
     str += chalk.inverse[color](' ' + label + ' ') + '\n';
-    str += chalk[color](symbols.hr.repeat(80 - indent * 2)) + '\n';
+    str += chalk[color](symbols.hr.repeat(80 - depth * 2)) + '\n';
 
-    return indentString(str, '  ', indent);
+    return str;
 }
 
 function reporter(options) {
@@ -23,6 +23,7 @@ function reporter(options) {
     }, options);
 
     let stdout;  // Need to grab references to the write methods because of step.write.* methods
+    const indent = indenter();
 
     return {
         plan: {
@@ -46,24 +47,24 @@ function reporter(options) {
 
         phase: {
             start(phase) {
-                stdout(label(phase.label, phase.depth, 'cyan'));
+                stdout(indent(label(phase.label, 'cyan', phase.depth), phase.depth));
             },
         },
 
         step: {
             start(step) {
-                stdout(label(step.label, step.depth, 'white'));
+                stdout(indent(label(step.label, 'white', step.depth), step.depth));
             },
             write: {
                 stdout(step, str) {
-                    stdout(indentString('' + str, '  ', step.depth));  // str can be a buffer
+                    stdout(indent('' + str, step.depth));  // str can be a buffer
                 },
                 stderr(step, str) {
-                    stdout(indentString('' + str, '  ', step.depth));  // str can be a buffer
+                    stdout(indent('' + str, step.depth));  // str can be a buffer
                 },
             },
             fail(step, err) {
-                stdout(label('ERROR', step.depth, 'red'));
+                stdout(indent(label('ERROR', 'red', step.depth), step.depth));
 
                 let str = (err.code ? err.code + ' - ' : '') + err.message + '\n';
 
@@ -72,7 +73,7 @@ function reporter(options) {
                     str += err.detail + '\n';
                 }
 
-                stdout(indentString(str, '  ', step.depth));
+                stdout(indent(str, step.depth));
             },
         },
     };
