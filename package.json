@@ -46,7 +46,7 @@
     "eslint": "^2.12.0",
     "glob": "^7.0.0",
     "istanbul": "^0.4.1",
-    "mocha": "^2.3.4",
+    "mocha": "^2.5.0",
     "require-directory": "^2.1.1"
   },
   "engines": {
