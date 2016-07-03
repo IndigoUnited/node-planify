@@ -39,7 +39,7 @@ function indenter() {
             return message;
         }
 
-        message = indentString(message, '  ', depth);
+        message = indentString(message, depth, '  ');
 
         // If we are not in a new line, we must strip the leading indentation while
         // keeping the indentation made for subsequent lines
