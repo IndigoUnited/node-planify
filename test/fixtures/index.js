@@ -3,4 +3,4 @@
 const requireDirectory = require('require-directory');
 const camelCase = require('lodash/camelCase');
 
-module.exports = requireDirectory(module, { rename: camelCase });
+module.exports = requireDirectory(module, { rename: camelCase, recurse: false });
