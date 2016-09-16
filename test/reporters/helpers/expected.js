@@ -13,7 +13,7 @@ function expectations(reporter) {
     const expectations = {};
 
     glob
-    .sync(__dirname + '/../expected/' + reporter + '.*')
+    .sync(reporter + '.*', { cwd: __dirname + '/../expected', realpath: true })
     .forEach((file) => {
         const name = path.basename(file).substr(reporter.length + 1);
         const fixture = fixtures[camelCase(name)];
