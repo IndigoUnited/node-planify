@@ -113,7 +113,7 @@ const plan = planify({
 /* ... */
 ```
 
-One cool feature of the reporters is that they can be async. You may return promises or use callbacks to do async reporting (.e.g.: save stuff to a database).
+One cool feature of the reporters is that they can be async. You may return promises or use callbacks to do async reporting (e.g.: save stuff to a database).
 
 Feel free to make a PR to add your reporter to the built-in reporters.
 
