@@ -1,11 +1,11 @@
 {
   "refs": {
-    "1lyz26b8ws80k": {
+    "3z61hw3xhykgw": {
       "type": "plan",
       "label": "Plan",
       "depth": -1
     },
-    "placg1fgmowk": {
+    "gz5cwr85b54o8": {
       "type": "step",
       "label": "Step",
       "depth": 0,
@@ -22,62 +22,66 @@
   "actions": [
     {
       "name": "plan.start",
-      "ref": "1lyz26b8ws80k"
+      "ref": "3z61hw3xhykgw"
     },
     {
       "name": "step.start",
-      "ref": "placg1fgmowk"
+      "ref": "gz5cwr85b54o8"
     },
     {
       "name": "step.write.stdout",
-      "ref": "placg1fgmowk",
+      "ref": "gz5cwr85b54o8",
       "str": "step.visit\n"
     },
     {
       "name": "step.fail",
-      "ref": "placg1fgmowk",
+      "ref": "gz5cwr85b54o8",
       "info": {
-        "startedAt": 1452737773751,
+        "startedAt": 1492650290922,
         "error": {
-          "message": "Fail with detail",
           "code": "ESOMECODE",
-          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line.",
+          "name": "Error",
+          "message": "Fail with detail"
         }
       }
     },
     {
       "name": "step.finish",
-      "ref": "placg1fgmowk",
+      "ref": "gz5cwr85b54o8",
       "info": {
-        "startedAt": 1452737773751,
+        "startedAt": 1492650290922,
         "error": {
-          "message": "Fail with detail",
           "code": "ESOMECODE",
-          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line.",
+          "name": "Error",
+          "message": "Fail with detail"
         }
       }
     },
     {
       "name": "plan.fail",
-      "ref": "1lyz26b8ws80k",
+      "ref": "3z61hw3xhykgw",
       "info": {
-        "startedAt": 1452737773751,
+        "startedAt": 1492650290922,
         "error": {
-          "message": "Fail with detail",
           "code": "ESOMECODE",
-          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line.",
+          "name": "Error",
+          "message": "Fail with detail"
         }
       }
     },
     {
       "name": "plan.finish",
-      "ref": "1lyz26b8ws80k",
+      "ref": "3z61hw3xhykgw",
       "info": {
-        "startedAt": 1452737773751,
+        "startedAt": 1492650290922,
         "error": {
-          "message": "Fail with detail",
           "code": "ESOMECODE",
-          "detail": "This is something that will also be printed.\nIt actually supports multi-line."
+          "detail": "This is something that will also be printed.\nIt actually supports multi-line.",
+          "name": "Error",
+          "message": "Fail with detail"
         }
       }
     }

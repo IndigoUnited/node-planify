@@ -1,23 +1,13 @@
 [?25l
-  [36m-[39m  [90mStep 1 - Sync[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 1 - Sync[39m
-  [36m-[39m  [90mStep 2 - Promise[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 2 - Promise[39m
-  [36m-[39m  [90mStep 3 - Callback[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 3 - Callback[39m[31m (202ms)[39m
-  Phase 1
-    [36m-[39m  [90mStep 4 - Promise[39m
-[1A[2K[1000D    [32m✓[39m  [90mStep 4 - Promise[39m[33m (102ms)[39m
-    Phase 1.1
-      [36m-[39m  [90mStep 5 - Sync[39m
-[1A[2K[1000D      [31m✖[39m  [90mStep 5 - Sync[39m
+  [36m-[39m  [90mStep[39m
+[1A[2K[1000D  [31m✖[39m  [90mStep[39m
 
 [1m[31mERROR:[39m[22m
-Will NOT be ignored
+[2mSyntaxError[22m There's a syntax error in your code
 
 Stack:  [0m
-[0m  [0m[90m-[0m [0m[93mcomplex-fail.js[0m[90m:[0m[93m41[0m[37m [0m[37mphase.step[0m
-[0m  [0m  [0m[90m/Users/andrecruz/Work/indigo/node-planify/test/fixtures/complex-fail.js:41:23[0m
+[0m  [0m[90m-[0m [0m[93msyntax-err-fail.js[0m[90m:[0m[93m10[0m[37m [0m[37mplanify.step[0m
+[0m  [0m  [0m[90m/Users/andrecruz/Work/indigo/node-planify/test/fixtures/syntax-err-fail.js:10:15[0m
 [0m  [0m[90m-[0m [0m[93mpromisify.js[0m[90m:[0m[93m31[0m[37m [0m[37mObject.fn[0m
 [0m  [0m  [0m[90m/Users/andrecruz/Work/indigo/node-planify/lib/promisify.js:31:39[0m
 [0m  [0m[90m-[0m [0m[93mrun.js[0m[90m:[0m[93m80[0m[37m [0m[37mrunStep[0m

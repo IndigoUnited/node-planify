@@ -2,21 +2,26 @@
 
 const chalk = require('chalk');
 const ansiEscapes = require('ansi-escapes');
+const error = require('./util/error');
 
 const sequence = ['|', '/', '-', '\\'];
 
-function printSequence(index, isError) {
+function printSequence(index, stdout) {
     index = (index < sequence.length - 1) ? index + 1 : 0;
 
-    const str = isError ? chalk.bold.yellow(sequence[index]) : chalk.bold.green(sequence[index]);
+    const str = chalk.bold(sequence[index]);
 
-    process.stdout.write(ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
-    process.stdout.write(str);
+    stdout.write(ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
+    stdout.write(str);
 
     return index;
 }
 
-function reporter() {
+function reporter(options) {
+    options = Object.assign({
+        stdout: process.stdout,
+    }, options);
+
     let index;
 
     return {
@@ -24,42 +29,35 @@ function reporter() {
             start() {
                 index = 0;
 
-                const str = chalk.bold.green(sequence[index]);
-
-                process.stdout.write(ansiEscapes.cursorHide);
-                process.stdout.write(str);
+                options.stdout.write(ansiEscapes.cursorHide);
+                index = printSequence(index, options.stdout);
             },
             fail(plan, err) {
-                let str = chalk.bold.red('ERROR:') + '\n';
+                options.stdout.write(ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
 
-                str += err.message + '\n';
+                let str;
 
-                if (typeof err.detail === 'string') {
-                    str += '\n';
-                    str += err.detail + '\n';
-                }
+                str = chalk.bold.red('ERROR:') + '\n';
+                str += error(err);
 
-                process.stdout.write(ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
-                process.stdout.write(str);
+                options.stdout.write(str);
             },
 
             ok() {
-                const str = chalk.bold.green('Done!\n');
-
-                process.stdout.write(ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
-                process.stdout.write(str);
+                options.stdout.write(ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
+                options.stdout.write(chalk.bold.green('Done!\n'));
             },
             finish() {
-                process.stdout.write(ansiEscapes.cursorShow);
+                options.stdout.write(ansiEscapes.cursorShow);
             },
         },
 
         step: {
             ok() {
-                index = printSequence(index);
+                index = printSequence(index, options.stdout);
             },
             fail() {
-                index = printSequence(index, true);
+                index = printSequence(index, options.stdout);
             },
         },
     };

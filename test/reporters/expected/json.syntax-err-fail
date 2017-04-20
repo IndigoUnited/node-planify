@@ -1,0 +1,81 @@
+{
+  "refs": {
+    "9s4knsk66io04": {
+      "type": "plan",
+      "label": "Plan",
+      "depth": -1
+    },
+    "fq65ffw6hswg4": {
+      "type": "step",
+      "label": "Step",
+      "depth": 0,
+      "options": {
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
+        "fatal": true,
+        "slow": 200
+      }
+    }
+  },
+  "actions": [
+    {
+      "name": "plan.start",
+      "ref": "9s4knsk66io04"
+    },
+    {
+      "name": "step.start",
+      "ref": "fq65ffw6hswg4"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "fq65ffw6hswg4",
+      "str": "step.visit\n"
+    },
+    {
+      "name": "step.fail",
+      "ref": "fq65ffw6hswg4",
+      "info": {
+        "startedAt": 1492650290938,
+        "error": {
+          "name": "SyntaxError",
+          "message": "There's a syntax error in your code"
+        }
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "fq65ffw6hswg4",
+      "info": {
+        "startedAt": 1492650290938,
+        "error": {
+          "name": "SyntaxError",
+          "message": "There's a syntax error in your code"
+        }
+      }
+    },
+    {
+      "name": "plan.fail",
+      "ref": "9s4knsk66io04",
+      "info": {
+        "startedAt": 1492650290938,
+        "error": {
+          "name": "SyntaxError",
+          "message": "There's a syntax error in your code"
+        }
+      }
+    },
+    {
+      "name": "plan.finish",
+      "ref": "9s4knsk66io04",
+      "info": {
+        "startedAt": 1492650290938,
+        "error": {
+          "name": "SyntaxError",
+          "message": "There's a syntax error in your code"
+        }
+      }
+    }
+  ]
+}

@@ -289,6 +289,7 @@
       "info": {
         "startedAt": 1466289701764,
         "error": {
+          "name": "Error",
           "message": "Will be ignored"
         }
       }
@@ -299,6 +300,7 @@
       "info": {
         "startedAt": 1466289701764,
         "error": {
+          "name": "Error",
           "message": "Will be ignored"
         }
       }

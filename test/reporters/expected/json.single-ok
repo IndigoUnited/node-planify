@@ -1,0 +1,77 @@
+{
+  "refs": {
+    "4ce3uoidyhgk4": {
+      "type": "plan",
+      "label": "Plan",
+      "depth": -1
+    },
+    "f9j2d6ttvsw0c": {
+      "type": "step",
+      "label": "Single step",
+      "depth": 0,
+      "options": {
+        "mute": {
+          "stdout": false,
+          "stderr": false
+        },
+        "fatal": true,
+        "slow": 200
+      }
+    }
+  },
+  "actions": [
+    {
+      "name": "plan.start",
+      "ref": "4ce3uoidyhgk4"
+    },
+    {
+      "name": "step.start",
+      "ref": "f9j2d6ttvsw0c"
+    },
+    {
+      "name": "step.write.stdout",
+      "ref": "f9j2d6ttvsw0c",
+      "str": "single-step.visit\n"
+    },
+    {
+      "name": "step.ok",
+      "ref": "f9j2d6ttvsw0c",
+      "info": {
+        "startedAt": 1492648353628,
+        "finishedAt": 1492648353628,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "step.finish",
+      "ref": "f9j2d6ttvsw0c",
+      "info": {
+        "startedAt": 1492648353628,
+        "finishedAt": 1492648353628,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "plan.ok",
+      "ref": "4ce3uoidyhgk4",
+      "info": {
+        "startedAt": 1492648353628,
+        "finishedAt": 1492648353628,
+        "duration": 0,
+        "speed": "fast"
+      }
+    },
+    {
+      "name": "plan.finish",
+      "ref": "4ce3uoidyhgk4",
+      "info": {
+        "startedAt": 1492648353628,
+        "finishedAt": 1492648353628,
+        "duration": 0,
+        "speed": "fast"
+      }
+    }
+  ]
+}

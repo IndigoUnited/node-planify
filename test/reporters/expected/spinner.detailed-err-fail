@@ -1,5 +1,5 @@
-[?25l[1m[32m|[39m[22m[2K[1000D[1m[33m/[39m[22m[2K[1000D[1m[31mERROR:[39m[22m
-Fail with detail
+[?25l[2K[1000D[1m/[22m[2K[1000D[1m-[22m[2K[1000D[1m[31mERROR:[39m[22m
+[2mESOMECODE[22m Fail with detail
 
 This is something that will also be printed.
 It actually supports multi-line.

@@ -3,7 +3,7 @@
 [1A[2K[1000D  [31m✖[39m  [90mStep[39m
 
 [1m[31mERROR:[39m[22m
-Fail with detail
+[2mESOMECODE[22m Fail with detail
 
 This is something that will also be printed.
 It actually supports multi-line.

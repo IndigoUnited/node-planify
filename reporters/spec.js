@@ -1,14 +1,14 @@
 'use strict';
 
 const chalk = require('chalk');
-const assign = require('lodash/assign');
 const ansiEscapes = require('ansi-escapes');
 const duration = require('./util/duration');
 const symbols = require('./util/symbols');
 const indenter = require('./util/indenter');
+const error = require('./util/error');
 
 function reporter(options) {
-    options = assign({
+    options = Object.assign({
         stdout: process.stdout,
     }, options);
 
@@ -34,12 +34,7 @@ function reporter(options) {
 
                 str = '\n';
                 str += chalk.bold.red('ERROR:') + '\n';
-                str += err.message + '\n';
-
-                if (typeof err.detail === 'string') {
-                    str += '\n';
-                    str += err.detail + '\n';
-                }
+                str += error(err);
 
                 options.stdout.write(str);
             },
@@ -62,18 +57,20 @@ function reporter(options) {
                 options.stdout.write(indent(str, step.depth + 1));
             },
             ok(step) {
+                options.stdout.write(ansiEscapes.cursorUp() + ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
+
                 let str;
 
                 str = chalk.green(symbols.ok) + '  ' + chalk.gray(step.label);
                 str += (step.info.speed !== 'fast' ? duration(step, ' (%s)') : '') + '\n';
 
-                options.stdout.write(ansiEscapes.cursorUp() + ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
                 options.stdout.write(indent(str, step.depth + 1));
             },
             fail(step) {
+                options.stdout.write(ansiEscapes.cursorUp() + ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
+
                 const str = chalk.red(symbols.fail) + '  ' + chalk.gray(step.label) + '\n';
 
-                options.stdout.write(ansiEscapes.cursorUp() + ansiEscapes.eraseLine + ansiEscapes.cursorLeft);
                 options.stdout.write(indent(str, step.depth + 1));
             },
         },

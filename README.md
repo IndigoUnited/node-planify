@@ -117,6 +117,18 @@ One cool feature of the reporters is that they can be async. You may return prom
 
 Feel free to make a PR to add your reporter to the built-in reporters.
 
+#### Errors
+
+All reporters print errors in a consistent way:
+
+```
+[err.code|err.name if !== 'Error'] err.message
+
+[err.detail|err.stack if !err.hideStack]
+```
+
+If an error contains a `detail` property, it will be printed bellow the message. If not, the stack will be printed instead unless `hideStack` is set to `false`.
+
 
 ### Full API
 

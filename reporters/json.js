@@ -1,8 +1,9 @@
 'use strict';
 
-const assign = require('lodash/assign');
 const pick = require('lodash/pick');
+const omit = require('lodash/omit');
 const indentString = require('indent-string');
+const serializeError = require('serialize-error');
 
 function fillReferences(refs, node) {
     let ref;
@@ -25,14 +26,14 @@ function mapInfo(node) {
     const info = Object.assign({}, node.info);
 
     if (info.error) {
-        info.error = pick(node.info.error, 'message', 'code', 'detail');
+        info.error = omit(serializeError(node.info.error), 'stack');
     }
 
     return info;
 }
 
 function reporter(options) {
-    options = assign({
+    options = Object.assign({
         stdout: process.stdout,
     }, options);
 

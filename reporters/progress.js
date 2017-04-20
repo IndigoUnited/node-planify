@@ -3,6 +3,7 @@
 const ProgressBar = require('cli-progress-bar');
 const chalk = require('chalk');
 const duration = require('./util/duration');
+const error = require('./util/error');
 
 function reporter() {
     let bar;
@@ -33,12 +34,7 @@ function reporter() {
 
                 str = '\n';
                 str += chalk.bold.red('ERROR:') + '\n';
-                str += err.message + '\n';
-
-                if (typeof err.detail === 'string') {
-                    str += '\n';
-                    str += err.detail + '\n';
-                }
+                str += error(err);
 
                 process.stdout.write(str);
             },

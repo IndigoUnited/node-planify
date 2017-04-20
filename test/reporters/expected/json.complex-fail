@@ -1,11 +1,11 @@
 {
   "refs": {
-    "1bv38fy0dsw0s": {
+    "9uebh0j5xr0g0": {
       "type": "plan",
       "label": "Plan",
       "depth": -1
     },
-    "1g5mxey7ypog8": {
+    "e3x4t20sk0g8o": {
       "type": "step",
       "label": "Step 1 - Sync",
       "depth": 0,
@@ -18,7 +18,7 @@
         "slow": 200
       }
     },
-    "1coanu3yfan4o": {
+    "kxe6vk7yukg44": {
       "type": "step",
       "label": "Step 2 - Promise",
       "depth": 0,
@@ -31,7 +31,7 @@
         "slow": 200
       }
     },
-    "fshxhh3gk80k": {
+    "dleasrnea00kk": {
       "type": "step",
       "label": "Step 3 - Callback",
       "depth": 0,
@@ -44,12 +44,12 @@
         "slow": 200
       }
     },
-    "14bx903eubdsg": {
+    "jt5c3ybrwu80g": {
       "type": "phase",
       "label": "Phase 1",
       "depth": 0
     },
-    "521d7mr6yxcs": {
+    "cso3bgrk2a880": {
       "type": "step",
       "label": "Step 4 - Promise",
       "depth": 1,
@@ -62,12 +62,12 @@
         "slow": 200
       }
     },
-    "1yeubwv9rwbkc": {
+    "i7qlgsdf520cs": {
       "type": "phase",
       "label": "Phase 1.1",
       "depth": 1
     },
-    "1jz6ensatgn4s": {
+    "3lioh754hless": {
       "type": "step",
       "label": "Step 5 - Sync",
       "depth": 2,
@@ -80,12 +80,12 @@
         "slow": 200
       }
     },
-    "hfhdefn2p1k4": {
+    "ftyt9fly46go0": {
       "type": "phase",
       "label": "Phase 2",
       "depth": 0
     },
-    "17egfp57y9uks": {
+    "kcwok3wr0c0sg": {
       "type": "step",
       "label": "Step 6 - Sync",
       "depth": 1,
@@ -98,7 +98,7 @@
         "slow": 200
       }
     },
-    "1sxo2r65p6dcs": {
+    "57inbem94k08g": {
       "type": "step",
       "label": "Step 7 - Sync",
       "depth": 0,
@@ -115,237 +115,245 @@
   "actions": [
     {
       "name": "plan.start",
-      "ref": "1bv38fy0dsw0s"
+      "ref": "9uebh0j5xr0g0"
     },
     {
       "name": "step.start",
-      "ref": "1g5mxey7ypog8"
+      "ref": "e3x4t20sk0g8o"
     },
     {
       "name": "step.write.stdout",
-      "ref": "1g5mxey7ypog8",
+      "ref": "e3x4t20sk0g8o",
       "str": "step-1.visit\n"
     },
     {
       "name": "step.ok",
-      "ref": "1g5mxey7ypog8",
+      "ref": "e3x4t20sk0g8o",
       "info": {
-        "startedAt": 1452737773082,
-        "finishedAt": 1452737773082,
+        "startedAt": 1492650290247,
+        "finishedAt": 1492650290247,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "1g5mxey7ypog8",
+      "ref": "e3x4t20sk0g8o",
       "info": {
-        "startedAt": 1452737773082,
-        "finishedAt": 1452737773082,
+        "startedAt": 1492650290247,
+        "finishedAt": 1492650290247,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "step.start",
-      "ref": "1coanu3yfan4o"
+      "ref": "kxe6vk7yukg44"
     },
     {
       "name": "step.write.stdout",
-      "ref": "1coanu3yfan4o",
+      "ref": "kxe6vk7yukg44",
       "str": "step-2.enter\n"
     },
     {
       "name": "step.write.stdout",
-      "ref": "1coanu3yfan4o",
+      "ref": "kxe6vk7yukg44",
       "str": "step-2.leave\n"
     },
     {
       "name": "step.ok",
-      "ref": "1coanu3yfan4o",
+      "ref": "kxe6vk7yukg44",
       "info": {
-        "startedAt": 1452737773082,
-        "finishedAt": 1452737773095,
-        "duration": 13,
+        "startedAt": 1492650290247,
+        "finishedAt": 1492650290259,
+        "duration": 12,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "1coanu3yfan4o",
+      "ref": "kxe6vk7yukg44",
       "info": {
-        "startedAt": 1452737773082,
-        "finishedAt": 1452737773095,
-        "duration": 13,
+        "startedAt": 1492650290247,
+        "finishedAt": 1492650290259,
+        "duration": 12,
         "speed": "fast"
       }
     },
     {
       "name": "step.start",
-      "ref": "fshxhh3gk80k"
+      "ref": "dleasrnea00kk"
     },
     {
       "name": "step.write.stdout",
-      "ref": "fshxhh3gk80k",
+      "ref": "dleasrnea00kk",
       "str": "step-3.enter\n"
     },
     {
       "name": "step.write.stdout",
-      "ref": "fshxhh3gk80k",
+      "ref": "dleasrnea00kk",
       "str": "step-3.leave\n"
     },
     {
       "name": "step.ok",
-      "ref": "fshxhh3gk80k",
+      "ref": "dleasrnea00kk",
       "info": {
-        "startedAt": 1452737773096,
-        "finishedAt": 1452737773300,
-        "duration": 204,
+        "startedAt": 1492650290260,
+        "finishedAt": 1492650290463,
+        "duration": 203,
         "speed": "slow"
       }
     },
     {
       "name": "step.finish",
-      "ref": "fshxhh3gk80k",
+      "ref": "dleasrnea00kk",
       "info": {
-        "startedAt": 1452737773096,
-        "finishedAt": 1452737773300,
-        "duration": 204,
+        "startedAt": 1492650290260,
+        "finishedAt": 1492650290463,
+        "duration": 203,
         "speed": "slow"
       }
     },
     {
       "name": "phase.start",
-      "ref": "14bx903eubdsg"
+      "ref": "jt5c3ybrwu80g"
     },
     {
       "name": "step.start",
-      "ref": "521d7mr6yxcs"
+      "ref": "cso3bgrk2a880"
     },
     {
       "name": "step.write.stdout",
-      "ref": "521d7mr6yxcs",
+      "ref": "cso3bgrk2a880",
       "str": "step-4.enter\n"
     },
     {
       "name": "step.write.stdout",
-      "ref": "521d7mr6yxcs",
+      "ref": "cso3bgrk2a880",
       "str": "step-4.leave\n"
     },
     {
       "name": "step.ok",
-      "ref": "521d7mr6yxcs",
+      "ref": "cso3bgrk2a880",
       "info": {
-        "startedAt": 1452737773300,
-        "finishedAt": 1452737773403,
-        "duration": 103,
+        "startedAt": 1492650290463,
+        "finishedAt": 1492650290564,
+        "duration": 101,
         "speed": "medium"
       }
     },
     {
       "name": "step.finish",
-      "ref": "521d7mr6yxcs",
+      "ref": "cso3bgrk2a880",
       "info": {
-        "startedAt": 1452737773300,
-        "finishedAt": 1452737773403,
-        "duration": 103,
+        "startedAt": 1492650290463,
+        "finishedAt": 1492650290564,
+        "duration": 101,
         "speed": "medium"
       }
     },
     {
       "name": "phase.start",
-      "ref": "1yeubwv9rwbkc"
+      "ref": "i7qlgsdf520cs"
     },
     {
       "name": "step.start",
-      "ref": "1jz6ensatgn4s"
+      "ref": "3lioh754hless"
     },
     {
       "name": "step.write.stdout",
-      "ref": "1jz6ensatgn4s",
+      "ref": "3lioh754hless",
       "str": "step-5.visit\n"
     },
     {
       "name": "step.write.stderr",
-      "ref": "1jz6ensatgn4s",
+      "ref": "3lioh754hless",
       "str": "Will throw an error\n"
     },
     {
       "name": "step.fail",
-      "ref": "1jz6ensatgn4s",
+      "ref": "3lioh754hless",
       "info": {
-        "startedAt": 1452737773404,
+        "startedAt": 1492650290567,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }
     },
     {
       "name": "step.finish",
-      "ref": "1jz6ensatgn4s",
+      "ref": "3lioh754hless",
       "info": {
-        "startedAt": 1452737773404,
+        "startedAt": 1492650290567,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }
     },
     {
       "name": "phase.fail",
-      "ref": "1yeubwv9rwbkc",
+      "ref": "i7qlgsdf520cs",
       "info": {
-        "startedAt": 1452737773404,
+        "startedAt": 1492650290567,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }
     },
     {
       "name": "phase.finish",
-      "ref": "1yeubwv9rwbkc",
+      "ref": "i7qlgsdf520cs",
       "info": {
-        "startedAt": 1452737773404,
+        "startedAt": 1492650290567,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }
     },
     {
       "name": "phase.fail",
-      "ref": "14bx903eubdsg",
+      "ref": "jt5c3ybrwu80g",
       "info": {
-        "startedAt": 1452737773300,
+        "startedAt": 1492650290463,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }
     },
     {
       "name": "phase.finish",
-      "ref": "14bx903eubdsg",
+      "ref": "jt5c3ybrwu80g",
       "info": {
-        "startedAt": 1452737773300,
+        "startedAt": 1492650290463,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }
     },
     {
       "name": "plan.fail",
-      "ref": "1bv38fy0dsw0s",
+      "ref": "9uebh0j5xr0g0",
       "info": {
-        "startedAt": 1452737773082,
+        "startedAt": 1492650290247,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }
     },
     {
       "name": "plan.finish",
-      "ref": "1bv38fy0dsw0s",
+      "ref": "9uebh0j5xr0g0",
       "info": {
-        "startedAt": 1452737773082,
+        "startedAt": 1492650290247,
         "error": {
+          "name": "Error",
           "message": "Will NOT be ignored"
         }
       }

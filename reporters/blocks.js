@@ -1,11 +1,11 @@
 'use strict';
 
 const chalk = require('chalk');
-const assign = require('lodash/assign');
 const ansiEscapes = require('ansi-escapes');
 const duration = require('./util/duration');
 const symbols = require('./util/symbols');
 const indenter = require('./util/indenter');
+const error = require('./util/error');
 
 function label(label, color, depth) {
     let str;
@@ -18,7 +18,7 @@ function label(label, color, depth) {
 }
 
 function reporter(options) {
-    options = assign({
+    options = Object.assign({
         stdout: process.stdout,
     }, options);
 
@@ -64,14 +64,10 @@ function reporter(options) {
                 },
             },
             fail(step, err) {
-                stdout(indent(label('ERROR', 'red', step.depth), step.depth));
+                let str;
 
-                let str = (err.code ? err.code + ' - ' : '') + err.message + '\n';
-
-                if (typeof err.detail === 'string') {
-                    str += '\n';
-                    str += err.detail + '\n';
-                }
+                str = label('ERROR', 'red', step.depth);
+                str += error(err);
 
                 stdout(indent(str, step.depth));
             },
