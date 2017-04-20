@@ -20,7 +20,7 @@ if (cliCharacterSet !== 'unicode') {
 }
 
 function normalize(str) {
-    str = normalizers.duration(str);
+    str = normalizers.duration(normalizers.errorStack(str));
 
     // Normalize progress bar symbols
     symbolsReplacers.forEach((replacer) => {

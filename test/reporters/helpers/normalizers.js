@@ -28,8 +28,12 @@ function normalizeDuration(str) {
     return str.replace(/\d+ms/g, '100ms');
 }
 
+function normalizeErrorStack(str) {
+    return str.replace(/Stack:[\s\S]+(\n\n)?$/g, 'Stack:$1');
+}
 
 module.exports = {
     symbols: normalizeSymbols,
     duration: normalizeDuration,
+    errorStack: normalizeErrorStack,
 };

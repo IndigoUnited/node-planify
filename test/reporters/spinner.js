@@ -1,13 +1,18 @@
 'use strict';
 
 const expect = require('chai').expect;
-const expected = require('./helpers/expected');
 const spinnerReporter = require('../../reporters/spinner');
+const expected = require('./helpers/expected');
+const normalizers = require('./helpers/normalizers');
 
 const expectations = expected.expectations('spinner');
 
+function normalize(str) {
+    return normalizers.errorStack(str);
+}
+
 describe('spinner', () => {
-    expected.test(expectations);
+    expected.test(expectations, normalize);
 
     it('should use the passed in options.stdout', () => {
         let output = '';
@@ -18,7 +23,7 @@ describe('spinner', () => {
         })
         .spread((buffered, expected) => {
             expect(buffered).to.eql({ stdout: '', stderr: '' });
-            expect(output).to.equal(expected);
+            expect(normalize(output)).to.equal(normalize(expected));
         });
     });
 });

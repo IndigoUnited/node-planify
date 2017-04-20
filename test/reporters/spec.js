@@ -6,7 +6,7 @@ const expected = require('./helpers/expected');
 const normalizers = require('./helpers/normalizers');
 
 function normalize(str) {
-    return normalizers.duration(normalizers.symbols(str));
+    return normalizers.duration(normalizers.symbols(normalizers.errorStack(str)));
 }
 
 const expectations = expected.expectations('spec');
