@@ -1,21 +1,22 @@
 [?25l
   [36m-[39m  [90mStep 1 - Sync[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 1 - Sync[39m
+[1A[2K[G  [32m✓[39m  [90mStep 1 - Sync[39m
   [36m-[39m  [90mStep 2 - Promise[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 2 - Promise[39m
+[1A[2K[G  [32m✓[39m  [90mStep 2 - Promise[39m
   [36m-[39m  [90mStep 3 - Callback[39m
-[1A[2K[1000D  [32m✓[39m  [90mStep 3 - Callback[39m[31m (202ms)[39m
+[1A[2K[G  [32m✓[39m  [90mStep 3 - Callback[39m[31m (207ms)[39m
   Phase 1
     [36m-[39m  [90mStep 4 - Promise[39m
-[1A[2K[1000D    [32m✓[39m  [90mStep 4 - Promise[39m[33m (102ms)[39m
+[1A[2K[G    [32m✓[39m  [90mStep 4 - Promise[39m[33m (103ms)[39m
     Phase 1.1
       [36m-[39m  [90mStep 5 - Sync[39m
-[1A[2K[1000D      [31m✖[39m  [90mStep 5 - Sync[39m
+[1A[2K[G      [31m✖[39m  [90mStep 5 - Sync[39m
 
 [1m[31mERROR:[39m[22m
 Will NOT be ignored
 
-Stack:  [0m
+Stack:
+[0m
 [0m  [0m[90m-[0m [0m[93mcomplex-fail.js[0m[90m:[0m[93m41[0m[37m [0m[37mphase.step[0m
 [0m  [0m  [0m[90m/Users/andrecruz/Work/indigo/node-planify/test/fixtures/complex-fail.js:41:23[0m
 [0m  [0m[90m-[0m [0m[93mpromisify.js[0m[90m:[0m[93m31[0m[37m [0m[37mObject.fn[0m
@@ -26,23 +27,24 @@ Stack:  [0m
 [0m  [0m  [0m[90m/Users/andrecruz/Work/indigo/node-planify/lib/run.js:136:40[0m
 [0m  [0m[90m-[0m [0m[93mutil.js[0m[90m:[0m[93m16[0m[37m [0m[37mtryCatcher[0m
 [0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/util.js:16:23[0m
-[0m  [0m[90m-[0m [0m[93mpromise.js[0m[90m:[0m[93m510[0m[37m [0m[37mPromise._settlePromiseFromHandler[0m
-[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/promise.js:510:31[0m
-[0m  [0m[90m-[0m [0m[93mpromise.js[0m[90m:[0m[93m567[0m[37m [0m[37mPromise._settlePromise[0m
-[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/promise.js:567:18[0m
-[0m  [0m[90m-[0m [0m[93mpromise.js[0m[90m:[0m[93m604[0m[37m [0m[37mPromise._settlePromiseCtx[0m
-[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/promise.js:604:10[0m
-[0m  [0m[90m-[0m [0m[93masync.js[0m[90m:[0m[93m143[0m[37m [0m[37mAsync._drainQueue[0m
-[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/async.js:143:12[0m
-[0m  [0m[90m-[0m [0m[93masync.js[0m[90m:[0m[93m148[0m[37m [0m[37mAsync._drainQueues[0m
-[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/async.js:148:10[0m
+[0m  [0m[90m-[0m [0m[93mpromise.js[0m[90m:[0m[93m512[0m[37m [0m[37mPromise._settlePromiseFromHandler[0m
+[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/promise.js:512:31[0m
+[0m  [0m[90m-[0m [0m[93mpromise.js[0m[90m:[0m[93m569[0m[37m [0m[37mPromise._settlePromise[0m
+[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/promise.js:569:18[0m
+[0m  [0m[90m-[0m [0m[93mpromise.js[0m[90m:[0m[93m606[0m[37m [0m[37mPromise._settlePromiseCtx[0m
+[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/promise.js:606:10[0m
+[0m  [0m[90m-[0m [0m[93masync.js[0m[90m:[0m[93m138[0m[37m [0m[37mAsync._drainQueue[0m
+[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/async.js:138:12[0m
+[0m  [0m[90m-[0m [0m[93masync.js[0m[90m:[0m[93m143[0m[37m [0m[37mAsync._drainQueues[0m
+[0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/async.js:143:10[0m
 [0m  [0m[90m-[0m [0m[93masync.js[0m[90m:[0m[93m17[0m[37m [0m[37mImmediate.Async.drainQueues[0m
 [0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/async.js:17:14[0m
-[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m666[0m[37m [0m[37mrunCallback[0m
-[0m  [0m  [0m[90mtimers.js:666:20[0m
-[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m639[0m[37m [0m[37mtryOnImmediate[0m
-[0m  [0m  [0m[90mtimers.js:639:5[0m
-[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m611[0m[37m [0m[37mprocessImmediate [as _immediateCallback][0m
-[0m  [0m  [0m[90mtimers.js:611:5[0m
+[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m672[0m[37m [0m[37mrunCallback[0m
+[0m  [0m  [0m[90mtimers.js:672:20[0m
+[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m645[0m[37m [0m[37mtryOnImmediate[0m
+[0m  [0m  [0m[90mtimers.js:645:5[0m
+[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m617[0m[37m [0m[37mprocessImmediate [as _immediateCallback][0m
+[0m  [0m  [0m[90mtimers.js:617:5[0m
 [0m
+
 [?25h

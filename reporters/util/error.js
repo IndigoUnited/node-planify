@@ -7,6 +7,9 @@ const chalk = require('chalk');
 const prettyError = new PrettyError();
 
 prettyError.appendStyle({
+    'pretty-error > trace': {
+        marginTop: 0,
+    },
     'pretty-error > header': {
         display: 'none',
     },
