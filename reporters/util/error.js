@@ -18,7 +18,7 @@ prettyError.appendStyle({
 function error(err) {
     let str = '';
 
-    if (err.code || err.name !== 'Error') {
+    if (err.code || (err.name && err.name !== 'Error')) {
         str += chalk.dim(err.code || err.name) + ' ';
     }
 
@@ -29,8 +29,8 @@ function error(err) {
         str += err.detail + '\n';
     } else if (!err.hideStack) {
         str += '\n';
-        str += 'Stack:';
-        str += prettyError.render(err);
+        str += 'Stack:\n';
+        str += prettyError.render(err).trim() + '\n';
     }
 
     return str;
