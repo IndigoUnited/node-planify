@@ -11,7 +11,7 @@
 [coveralls-image]:https://img.shields.io/coveralls/IndigoUnited/node-planify/master.svg
 [david-dm-url]:https://david-dm.org/IndigoUnited/node-planify
 [david-dm-image]:https://img.shields.io/david/IndigoUnited/node-planify.svg
-[david-dm-dev-url]:https://david-dm.org/IndigoUnited/node-planify#info=devDependencies
+[david-dm-dev-url]:https://david-dm.org/IndigoUnited/node-planify?type=dev
 [david-dm-dev-image]:https://img.shields.io/david/dev/IndigoUnited/node-planify.svg
 
 Plan a series of concrete steps and display their output in a beautiful way.
