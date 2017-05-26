@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@satazor/eslint-config": "^3.0.0",
-    "chai": "^3.4.1",
+    "chai": "^4.0.0",
     "cli-character-set": "^0.1.0",
     "coveralls": "^2.11.6",
     "eslint": "^3.0.0",
