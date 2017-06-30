@@ -32,7 +32,7 @@
   "dependencies": {
     "ansi-escapes": "^2.0.0",
     "bluebird": "^3.1.1",
-    "chalk": "^1.1.1",
+    "chalk": "^2.0.0",
     "cli-progress-bar": "^1.0.0",
     "indent-string": "^3.0.0",
     "lodash": "^4.5.0",
