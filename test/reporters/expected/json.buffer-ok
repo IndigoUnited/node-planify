@@ -1,11 +1,11 @@
 {
   "refs": {
-    "1lyl5jq2dgao4": {
+    "6xkk4oinsc800": {
       "type": "plan",
       "label": "Plan",
       "depth": -1
     },
-    "1wogobn4glmos": {
+    "d10ansql2yw00": {
       "type": "step",
       "label": "Single step",
       "depth": 0,
@@ -22,59 +22,59 @@
   "actions": [
     {
       "name": "plan.start",
-      "ref": "1lyl5jq2dgao4"
+      "ref": "6xkk4oinsc800"
     },
     {
       "name": "step.start",
-      "ref": "1wogobn4glmos"
+      "ref": "d10ansql2yw00"
     },
     {
       "name": "step.write.stdout",
-      "ref": "1wogobn4glmos",
+      "ref": "d10ansql2yw00",
       "str": "foo\n"
     },
     {
       "name": "step.write.stderr",
-      "ref": "1wogobn4glmos",
+      "ref": "d10ansql2yw00",
       "str": "bar\n"
     },
     {
       "name": "step.ok",
-      "ref": "1wogobn4glmos",
+      "ref": "d10ansql2yw00",
       "info": {
-        "startedAt": 1452737773077,
-        "finishedAt": 1452737773077,
+        "startedAt": 1498795597254,
+        "finishedAt": 1498795597254,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "1wogobn4glmos",
+      "ref": "d10ansql2yw00",
       "info": {
-        "startedAt": 1452737773077,
-        "finishedAt": 1452737773077,
+        "startedAt": 1498795597254,
+        "finishedAt": 1498795597254,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "plan.ok",
-      "ref": "1lyl5jq2dgao4",
+      "ref": "6xkk4oinsc800",
       "info": {
-        "startedAt": 1452737773077,
-        "finishedAt": 1452737773078,
-        "duration": 1,
+        "startedAt": 1498795597254,
+        "finishedAt": 1498795597254,
+        "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "plan.finish",
-      "ref": "1lyl5jq2dgao4",
+      "ref": "6xkk4oinsc800",
       "info": {
-        "startedAt": 1452737773077,
-        "finishedAt": 1452737773078,
-        "duration": 1,
+        "startedAt": 1498795597254,
+        "finishedAt": 1498795597254,
+        "duration": 0,
         "speed": "fast"
       }
     }

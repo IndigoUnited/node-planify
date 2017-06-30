@@ -4,10 +4,10 @@
   [36m-[39m  [90mStep 2 - Promise[39m
 [1A[2K[G  [32m✓[39m  [90mStep 2 - Promise[39m
   [36m-[39m  [90mStep 3 - Callback[39m
-[1A[2K[G  [32m✓[39m  [90mStep 3 - Callback[39m[31m (203ms)[39m
+[1A[2K[G  [32m✓[39m  [90mStep 3 - Callback[39m[31m (201ms)[39m
   Phase 1
     [36m-[39m  [90mStep 4 - Promise[39m
-[1A[2K[G    [32m✓[39m  [90mStep 4 - Promise[39m[33m (106ms)[39m
+[1A[2K[G    [32m✓[39m  [90mStep 4 - Promise[39m[33m (105ms)[39m
     Phase 1.1
       [36m-[39m  [90mStep 5 - Sync[39m
 [1A[2K[G      [31m✖[39m  [90mStep 5 - Sync[39m
@@ -19,6 +19,6 @@
   [36m-[39m  [90mStep 8 - Sync[39m
 [1A[2K[G  [32m✓[39m  [90mStep 8 - Sync[39m
 
-  8 steps ok [90m(339ms)[39m
+  8 steps ok [90m(329ms)[39m
 
 [?25h

@@ -2,8 +2,7 @@
 Will NOT be ignored
 
 Stack:
-[0m
-[0m  [0m[90m-[0m [0m[93mcomplex-fail.js[0m[90m:[0m[93m41[0m[37m [0m[37mphase.step[0m
+  [0m[90m-[0m [0m[93mcomplex-fail.js[0m[90m:[0m[93m41[0m[37m [0m[37mphase.step[0m
 [0m  [0m  [0m[90m/Users/andrecruz/Work/indigo/node-planify/test/fixtures/complex-fail.js:41:23[0m
 [0m  [0m[90m-[0m [0m[93mpromisify.js[0m[90m:[0m[93m31[0m[37m [0m[37mObject.fn[0m
 [0m  [0m  [0m[90m/Users/andrecruz/Work/indigo/node-planify/lib/promisify.js:31:39[0m
@@ -25,11 +24,11 @@ Stack:
 [0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/async.js:143:10[0m
 [0m  [0m[90m-[0m [0m[93masync.js[0m[90m:[0m[93m17[0m[37m [0m[37mImmediate.Async.drainQueues[0m
 [0m  [0m  [0m[90m[node-planify]/[bluebird]/js/release/async.js:17:14[0m
-[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m672[0m[37m [0m[37mrunCallback[0m
-[0m  [0m  [0m[90mtimers.js:672:20[0m
-[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m645[0m[37m [0m[37mtryOnImmediate[0m
-[0m  [0m  [0m[90mtimers.js:645:5[0m
-[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m617[0m[37m [0m[37mprocessImmediate [as _immediateCallback][0m
-[0m  [0m  [0m[90mtimers.js:617:5[0m
+[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m800[0m[37m [0m[37mrunCallback[0m
+[0m  [0m  [0m[90mtimers.js:800:20[0m
+[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m762[0m[37m [0m[37mtryOnImmediate[0m
+[0m  [0m  [0m[90mtimers.js:762:5[0m
+[0m  [0m[90m-[0m [0m[93mtimers.js[0m[90m:[0m[93m733[0m[37m [0m[37mprocessImmediate [as _immediateCallback][0m
+[0m  [0m  [0m[90mtimers.js:733:5[0m
 [0m
 [?25h

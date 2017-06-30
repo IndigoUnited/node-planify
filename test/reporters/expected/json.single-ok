@@ -1,11 +1,11 @@
 {
   "refs": {
-    "4ce3uoidyhgk4": {
+    "j5r3fy4iqp400": {
       "type": "plan",
       "label": "Plan",
       "depth": -1
     },
-    "f9j2d6ttvsw0c": {
+    "imgnsvy4nw00": {
       "type": "step",
       "label": "Single step",
       "depth": 0,
@@ -22,54 +22,54 @@
   "actions": [
     {
       "name": "plan.start",
-      "ref": "4ce3uoidyhgk4"
+      "ref": "j5r3fy4iqp400"
     },
     {
       "name": "step.start",
-      "ref": "f9j2d6ttvsw0c"
+      "ref": "imgnsvy4nw00"
     },
     {
       "name": "step.write.stdout",
-      "ref": "f9j2d6ttvsw0c",
+      "ref": "imgnsvy4nw00",
       "str": "single-step.visit\n"
     },
     {
       "name": "step.ok",
-      "ref": "f9j2d6ttvsw0c",
+      "ref": "imgnsvy4nw00",
       "info": {
-        "startedAt": 1492648353628,
-        "finishedAt": 1492648353628,
+        "startedAt": 1498795597940,
+        "finishedAt": 1498795597940,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "step.finish",
-      "ref": "f9j2d6ttvsw0c",
+      "ref": "imgnsvy4nw00",
       "info": {
-        "startedAt": 1492648353628,
-        "finishedAt": 1492648353628,
+        "startedAt": 1498795597940,
+        "finishedAt": 1498795597940,
         "duration": 0,
         "speed": "fast"
       }
     },
     {
       "name": "plan.ok",
-      "ref": "4ce3uoidyhgk4",
+      "ref": "j5r3fy4iqp400",
       "info": {
-        "startedAt": 1492648353628,
-        "finishedAt": 1492648353628,
-        "duration": 0,
+        "startedAt": 1498795597940,
+        "finishedAt": 1498795597941,
+        "duration": 1,
         "speed": "fast"
       }
     },
     {
       "name": "plan.finish",
-      "ref": "4ce3uoidyhgk4",
+      "ref": "j5r3fy4iqp400",
       "info": {
-        "startedAt": 1492648353628,
-        "finishedAt": 1492648353628,
-        "duration": 0,
+        "startedAt": 1498795597940,
+        "finishedAt": 1498795597941,
+        "duration": 1,
         "speed": "fast"
       }
     }

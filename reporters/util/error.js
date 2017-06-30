@@ -33,7 +33,7 @@ function error(err) {
     } else if (!err.hideStack) {
         str += '\n';
         str += 'Stack:\n';
-        str += prettyError.render(err).trim() + '\n';
+        str += prettyError.render(err).trimRight() + '\n';
     }
 
     return str;
