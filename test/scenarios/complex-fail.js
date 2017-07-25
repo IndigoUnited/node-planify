@@ -15,8 +15,8 @@ it('should run scenarios/complex-fail, verifying the order and the reporter inte
         },
     });
 
-    return fixtures.complexFail({ reporter })
-    .run()
+    return fixtures.complexFail()
+    .run({ reporter })
     .then(() => {
         throw new Error('Should have failed');
     }, () => {

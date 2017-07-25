@@ -40,64 +40,52 @@ function onNotification(reporter, node, action) {
     return Promise.resolve(reporterFn && reporterFn.apply(null, args));
 }
 
-function planify(options) {
-    options = merge({
-        reporter: 'blocks',
-        exit: false,
-    }, options);
-
-    const reporter = setupReporter(options.reporter);
-    const plan = build();
-    let didRun = false;
+function planify(data) {
+    const plan = build(data);
+    let running = false;
 
     return merge(plan, {
         getNode() {
             return plan.node;
         },
 
-        getReporter() {
-            return reporter;
-        },
-
-        run(data, done) {
-            if (typeof data === 'function') {
-                done = data;
-                data = null;
+        run(options, done) {
+            if (typeof options === 'function') {
+                done = options;
+                options = null;
             }
 
-            // Check if already run
-            if (didRun) {
-                return Promise.reject(new Error('This plan has already run'))
-                .nodeify(done);
-            }
+            options = Object.assign({
+                reporter: 'blocks',
+                exit: false,
+            }, options);
 
-            // Check if another plan is running..
-            if (global.$planifyRunning) {
-                return Promise.reject(new Error('Another plan is already running'))
-                .nodeify(done);
-            }
+            return Promise.try(() => {
+                // Setup reporter
+                const reporter = setupReporter(options.reporter);
 
-            // Run actual plan
-            global.$planifyRunning = true;  // Use global because several versions might be used
-            didRun = true;
+                // Run the plan
+                if (running) {
+                    throw new Error('Plan is already running');
+                }
 
-            // Fill initial data if necessary
-            if (data) {
-                plan.node.data = data;
-            }
+                running = true;
 
-            let promise = run(plan.node, onNotification.bind(null, reporter))
-            .finally(() => {
-                global.$planifyRunning = false;
-            });
-
+                return run(plan.node, onNotification.bind(null, reporter))
+                .finally(() => {
+                    running = false;
+                });
+            })
             // Exit automatically if options.exit is set to true
-            if (options.exit) {
-                promise = promise
-                .then(() => process.exit(0), (err) => process.exit(err.exitCode || 1));
-            }
+            .then(() => {
+                options.exit && process.exit(0);
+            }, (err) => {
+                if (!options.exit) {
+                    throw err;
+                }
 
-            return promise
+                process.exit(err.exitCode || 1);
+            })
             .return(plan.node.data)
             .nodeify(done);
         },

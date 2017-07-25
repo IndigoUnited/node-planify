@@ -144,8 +144,8 @@ it('should run scenarios/reporter-async, verifying if the reporter asynchrony is
         },
     };
 
-    return fixtures.complexOk({ reporter })
-    .run()
+    return fixtures.complexOk()
+    .run({ reporter })
     .then(() => {
         // Check stack without durations
         const normalizedStack = stack.map((item) => {

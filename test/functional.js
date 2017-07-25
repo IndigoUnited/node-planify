@@ -15,16 +15,6 @@ describe('functional', () => {
         });
     });
 
-    describe('.getReporter()', () => {
-        it('should return the configured reporter', () => {
-            const reporter = planify().getReporter();
-
-            expect(reporter).to.be.an('object');
-            expect(reporter.plan).to.be.an('object');
-            expect(reporter.plan.ok).to.be.a('function');
-        });
-    });
-
     describe('.phase()', () => {
         it('should be able to create phases', () => {
             const plan = planify();
@@ -99,7 +89,7 @@ describe('functional', () => {
 
     describe('.run()', () => {
         it('should successfully run a simple plan', () => {
-            return planify({ reporter: 'silent' })
+            return planify()
             .step('step 1', (data) => {
                 data.step1 = 'foo';
             })
@@ -111,7 +101,7 @@ describe('functional', () => {
                 return Promise.delay(50)
                 .then(() => { data.step3 = 'foo'; });
             })
-            .run()
+            .run({ reporter: 'silent' })
             .then((data) => {
                 expect(data).to.eql({
                     step1: 'foo',
@@ -122,9 +112,9 @@ describe('functional', () => {
         });
 
         it('should fail if one of the steps failed', () => {
-            return planify({ reporter: 'silent' })
+            return planify()
             .step('step 1', () => { throw new Error('foo'); })
-            .run()
+            .run({ reporter: 'silent' })
             .then(() => {
                 throw new Error('Should have failed');
             }, (err) => {
@@ -132,9 +122,9 @@ describe('functional', () => {
                 expect(err.message).to.equal('foo');
             })
             .then(() => {
-                return planify({ reporter: 'silent' })
-                .step('step 1', (data, done) => { done(new Error('foo')); })
-                .run();
+                return planify()
+                .step('step 1', (data, done) => done(new Error('foo')))
+                .run({ reporter: 'silent' });
             })
             .then(() => {
                 throw new Error('Should have failed');
@@ -143,9 +133,9 @@ describe('functional', () => {
                 expect(err.message).to.equal('foo');
             })
             .then(() => {
-                return planify({ reporter: 'silent' })
+                return planify()
                 .step('step 1', () => Promise.reject(new Error('foo')))
-                .run();
+                .run({ reporter: 'silent' });
             })
             .then(() => {
                 throw new Error('Should have failed');
@@ -156,60 +146,35 @@ describe('functional', () => {
         });
 
         it('should accept callbacks', (next) => {
-            planify({ reporter: 'silent' })
+            planify()
             .step('step 1', () => {})
-            .run((err) => {
+            .run({ reporter: 'silent' }, (err) => {
                 expect(err).to.not.be.ok;
-
-                planify({ reporter: 'silent' })
-                .step('step 1', () => {})
-                .run({}, (err) => {
-                    expect(err).to.not.be.ok;
-                    next();
-                });
+                next();
             });
         });
 
-        it('should fail if trying to run two plans simultaneously', () => {
-            const promise = planify({ reporter: 'silent' })
-            .step('step 1', () => {
-                return Promise.delay(100);
-            })
-            .run();
+        it('should fail if trying to run plan while already running', () => {
+            const plan = planify()
+            .step('step 1', () => Promise.delay(100));
 
-            return planify({ reporter: 'silent' })
-            .step('step 1', () => {})
-            .run()
+            const promise = plan.run({ reporter: 'silent' });
+
+            return plan.run({ reporter: 'silent' })
             .then(() => {
                 throw new Error('Should have failed');
             }, (err) => {
                 expect(err).to.be.an.instanceOf(Error);
-                expect(err.message).to.equal('Another plan is already running');
+                expect(err.message).to.equal('Plan is already running');
             })
             .finally(() => promise);
-        });
-
-        it('should not allow a plan to be run more than once', () => {
-            const plan = planify({ reporter: 'silent' })
-            .step('step 1', () => {});
-
-            return plan.run()
-            .then(() => {
-                return plan.run();
-            })
-            .then(() => {
-                throw new Error('Should have failed');
-            }, (err) => {
-                expect(err).to.be.an.instanceOf(Error);
-                expect(err.message).to.equal('This plan has already run');
-            });
         });
 
         it('should not allow any more phases or steps to be added if running', () => {
             let asserts = 0;
             let deepPhase;
 
-            const plan = planify({ reporter: 'silent' })
+            const plan = planify()
             .step('step 1', () => {
                 return Promise.delay(50);
             })
@@ -217,7 +182,7 @@ describe('functional', () => {
                 deepPhase = phase;
             });
 
-            const promise = plan.run();
+            const promise = plan.run({ reporter: 'silent' });
 
             setImmediate(() => {
                 expect(() => {
@@ -257,9 +222,9 @@ describe('functional', () => {
             const initialData = { foo: 'bar' };
             let stepData;
 
-            return planify({ reporter: 'silent' })
+            return planify(initialData)
             .step('step 1', (data) => { stepData = data; })
-            .run(initialData)
+            .run()
             .then((finalData) => {
                 expect(finalData).to.equal(initialData);
                 expect(stepData).to.equal(initialData);
@@ -276,35 +241,36 @@ describe('functional', () => {
                 },
             };
 
-            return planify({ reporter })
+            return planify()
             .step('step 1', () => {})
-            .run()
+            .run({ reporter })
             .then(() => {
                 expect(ok).to.equal(true);
             });
         });
 
-        it('should use the options.reporter as a string', () => {
-            const plan = planify({ reporter: 'silent' });
-
-            expect(plan.getReporter()).to.be.empty;
-        });
+        it.skip('should use the options.reporter as a string');
 
         it('should throw an appropriate error if options.reporter does not exist', () => {
-            expect(() => {
-                planify({ reporter: 'somethingthatwillneverexist' });
-            }).to.throw('Invalid reporter: somethingthatwillneverexist');
+            return planify()
+            .run({ reporter: 'somethingthatwillneverexist' })
+            .then(() => {
+                throw new Error('Should have failed');
+            }, (err) => {
+                expect(err.message).to.equal('Invalid reporter: somethingthatwillneverexist');
+            });
         });
 
         it('should throw an appropriate error if options.reporter is not a plain object', () => {
-            expect(() => {
-                function Foo() {}
-                planify({ reporter: new Foo() });
-            }).to.throw('Reporter must be a string or a plain object');
+            function Foo() {}
 
-            expect(() => {
-                planify({ reporter: true });
-            }).to.throw('Reporter must be a string or a plain object');
+            return planify()
+            .run({ reporter: new Foo() })
+            .then(() => {
+                throw new Error('Should have failed');
+            }, (err) => {
+                expect(err.message).to.equal('Reporter must be a string or a plain object');
+            });
         });
 
         it('should exit automatically with an appropriate exit code if options.exit is set to true', () => {
@@ -313,23 +279,23 @@ describe('functional', () => {
 
             process.exit = (code) => { exitCodes.push(code); };
 
-            return planify({ reporter: 'silent', exit: true })
+            return planify()
             .step('step 1', () => {})
-            .run()
+            .run({ reporter: 'silent', exit: true })
             .then(() => {
-                return planify({ reporter: 'silent', exit: true })
+                return planify()
                 .step('step 1', () => { throw new Error('foo'); })
-                .run();
+                .run({ reporter: 'silent', exit: true });
             })
             .then(() => {
-                return planify({ reporter: 'silent', exit: true })
+                return planify()
                 .step('step 1', () => {
                     const err = new Error('foo');
 
                     err.exitCode = 25;
                     throw err;
                 })
-                .run();
+                .run({ reporter: 'silent', exit: true });
             })
             .finally(() => {
                 process.exit = originalExit;
@@ -349,10 +315,10 @@ describe('functional', () => {
                 },
             };
 
-            return planify({ reporter })
+            return planify()
             .step('step 1', { fatal: false }, () => { throw new Error('foo'); })
             .step('step 2', (data) => { data.step2 = 'foo'; })
-            .run()
+            .run({ reporter })
             .then((data) => {
                 expect(stepError).to.be.an.instanceOf(Error);
                 expect(stepError.message).to.equal('foo');
@@ -368,11 +334,11 @@ describe('functional', () => {
                 },
             };
 
-            return planify({ reporter })
+            return planify()
             .step('step 1', { slow: 100 }, () => { return Promise.delay(101); })
             .step('step 3', { slow: 500 }, () => { return Promise.delay(251); })
             .step('step 4', { slow: 500 }, () => { return Promise.delay(10); })
-            .run()
+            .run({ reporter })
             .then(() => {
                 expect(speeds).to.eql(['slow', 'medium', 'fast']);
             });
@@ -390,14 +356,14 @@ describe('functional', () => {
                     },
                 };
 
-                return planify({ reporter })
+                return planify()
                 .step('step 1', options, () => {
                     console.log('write to stdout');
                     console.error('write to stderr');
                     process.stdout.write('write to stdout\n');
                     process.stderr.write('write to stderr\n');
                 })
-                .run()
+                .run({ reporter })
                 .finally(() => {
                     bufferStdio.finish();
                 })
@@ -481,7 +447,7 @@ describe('functional', () => {
                 },
             };
 
-            return planify({ reporter })
+            return planify()
             .step('step 1', () => {
                 console.log('write to stdout');
                 process.stdout.write('another write to stdout\n');
@@ -489,7 +455,7 @@ describe('functional', () => {
                 console.error('write to stderr');
                 process.stderr.write('another write to stderr\n');
             })
-            .run()
+            .run({ reporter })
             .then(() => {
                 expect(output).to.eql({
                     stdout: 'write to stdout\nanother write to stdout\n',
@@ -507,7 +473,7 @@ describe('functional', () => {
             process.removeListener('uncaughtException', mochaListener);
             process.once('uncaughtException', (err) => { uncaughtException = err; });
 
-            planify({ reporter: 'silent' })
+            planify()
             .step('step 1', () => {
                 setTimeout(() => {
                     process.nextTick(() => {
@@ -526,7 +492,7 @@ describe('functional', () => {
 
                 return Promise.delay(50);
             })
-            .run();
+            .run({ reporter: 'silent' });
         });
 
         it('should work well with buffers', () => {
@@ -546,12 +512,12 @@ describe('functional', () => {
                 },
             };
 
-            return planify({ reporter })
+            return planify()
             .step('step 1', () => {
                 process.stdout.write(new Buffer('write to stdout\n'));
                 process.stderr.write(new Buffer('write to stderr\n'));
             })
-            .run()
+            .run({ reporter })
             .then(() => {
                 expect(output).to.eql({
                     stdout: 'write to stdout\n',

@@ -3,8 +3,8 @@
 const Promise = require('bluebird');
 const planify = require('../../');
 
-function build(options) {
-    return planify(options)
+function build() {
+    return planify()
     .step('Step 1 - Sync', () => {
         console.log('step-1.visit');
     })

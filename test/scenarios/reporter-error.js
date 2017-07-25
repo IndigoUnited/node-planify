@@ -15,8 +15,8 @@ it('should run scenarios/reporter-error, verifying if the reporter errors are ha
         },
     };
 
-    return fixtures.complexOk({ reporter })
-    .run()
+    return fixtures.complexOk()
+    .run({ reporter })
     .then(() => {
         throw new Error('Should have failed');
     }, (err) => {
@@ -29,8 +29,8 @@ it('should run scenarios/reporter-error, verifying if the reporter errors are ha
             },
         };
 
-        return fixtures.complexOk({ reporter })
-        .run();
+        return fixtures.complexOk()
+        .run({ reporter });
     })
     .then(() => {
         throw new Error('Should have failed');
@@ -48,8 +48,8 @@ it('should run scenarios/reporter-error, verifying if the reporter errors are ha
             },
         };
 
-        return fixtures.complexOk({ reporter })
-        .run();
+        return fixtures.complexOk()
+        .run({ reporter });
     })
     .then(() => {
         throw new Error('Should have failed');
@@ -63,8 +63,8 @@ it('should run scenarios/reporter-error, verifying if the reporter errors are ha
             },
         };
 
-        return fixtures.complexOk({ reporter })
-        .run();
+        return fixtures.complexOk()
+        .run({ reporter });
     })
     .then(() => {
         throw new Error('Should have failed');
@@ -82,8 +82,8 @@ it('should run scenarios/reporter-error, verifying if the reporter errors are ha
             },
         };
 
-        return fixtures.complexOk({ reporter })
-        .run();
+        return fixtures.complexOk()
+        .run({ reporter });
     })
     .then(() => {
         throw new Error('Should have failed');
@@ -97,7 +97,8 @@ it('should run scenarios/reporter-error, verifying if the reporter errors are ha
             },
         };
 
-        return fixtures.complexOk({ reporter }).run();
+        return fixtures.complexOk()
+        .run({ reporter });
     })
     .then(() => {
         throw new Error('Should have failed');
@@ -123,8 +124,8 @@ it('should run scenarios/reporter-error, verifying if the step errors are more i
         },
     };
 
-    return fixtures.complexFail({ reporter })
-    .run()
+    return fixtures.complexFail()
+    .run({ reporter })
     .then(() => {
         throw new Error('Should have failed');
     }, (err) => {
@@ -146,8 +147,8 @@ it('should run scenarios/reporter-error, verifying if the step errors are more i
             },
         };
 
-        return fixtures.complexFail({ reporter })
-        .run();
+        return fixtures.complexFail()
+        .run({ reporter });
     })
     .then(() => {
         throw new Error('Should have failed');
@@ -170,8 +171,8 @@ it('should run scenarios/reporter-error, verifying if the step errors are more i
             },
         };
 
-        return fixtures.complexFail({ reporter })
-        .run()
+        return fixtures.complexFail()
+        .run({ reporter })
         .then(() => {
             throw new Error('Should have failed');
         }, (err) => {

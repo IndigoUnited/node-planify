@@ -3,8 +3,8 @@
 
 const planify = require('../../');
 
-function build(options) {
-    return planify(options)
+function build() {
+    return planify()
     .phase('foo', (phase) => {
         phase.step('bar', () => {
             process.stdout.write('foo');

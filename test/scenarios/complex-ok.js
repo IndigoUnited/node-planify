@@ -15,8 +15,8 @@ it('should run scenarios/complex-ok, verifying the order and the reporter integr
         },
     });
 
-    return fixtures.complexOk({ reporter })
-    .run()
+    return fixtures.complexOk()
+    .run({ reporter })
     .then(() => {
         const json = JSON.parse(stdout.trim());
         const actions = json.actions.map((action) => {

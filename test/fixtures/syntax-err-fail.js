@@ -2,8 +2,8 @@
 
 const planify = require('../../');
 
-function build(options) {
-    return planify(options)
+function build() {
+    return planify()
     .step('Step', () => {
         console.log('step.visit');
 

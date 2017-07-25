@@ -33,7 +33,7 @@ The API is very simple, yet very powerful:
 ```js
 const planify = require('planify');
 
-planify({ reporter: 'blocks' })  // 'blocks' is the default reporter
+planify()
 .step('Synchronous step', (data) => {
     console.log('A sync step in which data is', data);
     data.foz = 'baz';  // Set some data to the next step
@@ -53,7 +53,7 @@ planify({ reporter: 'blocks' })  // 'blocks' is the default reporter
         console.log('A sync step inside a phase in which data is', data);
     });
 })
-.run({ foo: 'bar' })
+.run()
 // Run returns a promise but callback style is also supported
 .then(() => process.exit(), (err) => process.exit(1));
 ```
@@ -108,7 +108,9 @@ module.exports = myReporter;
 const planify = require('planify');
 const myReporter = require('./my-reporter');
 
-const plan = planify({
+planify()
+.step('Do something', () => { /* ... */ })
+.run({
     reporter: myReporter({ /* reporter options if any */ })
 });
 
@@ -134,19 +136,13 @@ If an error contains a `detail` property, it will be printed bellow the message.
 
 ### Full API
 
-#### planify([options])
+#### planify([data])
 
-Creates a plan with the `given` options.
-
-Available options:
-
-- `reporter`: The reporter to be used which can be a string or a reporter object, defaults to `blocks`.
-- `exit`: True to exit automatically after running, defaults to `false`. If the plan fails with an error that has `err.exitCode`, the program will exit with that code.
-
+Creates a plan where `data` is the object that is going to be passed to steps.
 
 ```js
 const planify = require('planify');
-const plan = planify({ exit: true, reporter: 'spec' });
+const plan = planify({ foo: 'bar' });
 ```
 
 #### .step(label, [options], fn)
@@ -185,7 +181,6 @@ Adds a phase with `label` to the plan, executing `fn` with a `phase` object to d
 
 The `phase` object has the `step` and `phase` methods, allowing you to build a hierarchy of other phases and steps.
 
-
 ```js
 const planify = require('planify');
 const plan = planify();
@@ -196,12 +191,11 @@ plan.phase('Phase 1', (phase) => {
 });
 ```
 
-#### .run([data])
+#### .run([options])
 
 Runs the plan.
 Returns a promise that will be resolved when the plan succeeds or rejected if any of the steps failed.
 You may pass a callback as the second argument instead.
-
 
 ```js
 const planify = require('planify');
@@ -211,23 +205,19 @@ plan.step('Some cool step', (data) => {
     /* ... */
 });
 
-plan.run({ initial: 'data' })
+plan.run()
 .then(() => process.exit(0), () => process.exit(1));
 
 // or you may use callback style
-plan.run({ initial: 'data' }, (err) => {
+plan.run((err) => {
     process.exit(err ? 1 : 0);
 });
 ```
 
-#### .getReporter()
+Available options:
 
-Returns the configured reporter.
-
-#### .getNode()
-
-Returns the plan node, giving access to the plan tree. Use this at your own risk.
-
+- `reporter`: The reporter to be used which can be a string or a reporter object, defaults to `blocks`.
+- `exit`: True to exit automatically after running, defaults to `false`. If the plan fails with an error that has `err.exitCode`, the program will exit with that code.
 
 ### Caveats
 

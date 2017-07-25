@@ -29,11 +29,11 @@ function expectations(reporter) {
                     reporter,
                 }, options);
 
-                const plan = fixture(options);
+                const plan = fixture();
                 const buffered = bufferStdio.start();
 
                 return plan
-                .run()
+                .run(options)
                 .finally(() => bufferStdio.finish())
                 .catch(() => {})
                 .then(() => {
