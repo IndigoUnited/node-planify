@@ -11,6 +11,8 @@ const promisify = require('./lib/promisify');
 const build = require('./lib/build');
 
 function setupReporter(reporter) {
+    reporter = reporter || 'blocks';
+
     // If it is a string, import built-in reporter
     if (typeof reporter === 'string') {
         let factory;
