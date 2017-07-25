@@ -1,6 +1,6 @@
 {
   "name": "planify",
-  "version": "1.6.4",
+  "version": "2.0.0",
   "description": "Plan a series of steps and display the output in a beautiful way",
   "main": "index.js",
   "scripts": {
