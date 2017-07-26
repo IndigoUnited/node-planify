@@ -44,7 +44,6 @@ function onNotification(reporter, node, action) {
 
 function planify(data) {
     const plan = build(data);
-    let running = false;
 
     return merge(plan, {
         getNode() {
@@ -66,16 +65,18 @@ function planify(data) {
                 // Setup reporter
                 const reporter = setupReporter(options.reporter);
 
-                // Run the plan
-                if (running) {
-                    throw new Error('Plan is already running');
+                // Check if a plan is running
+                if (global.$planifyRunning) {
+                    return Promise.reject(new Error('A plan is already running'))
+                    .nodeify(done);
                 }
 
-                running = true;
+                // Run actual plan
+                global.$planifyRunning = true;  // Use global because several versions might be used
 
                 return run(plan.node, onNotification.bind(null, reporter))
                 .finally(() => {
-                    running = false;
+                    global.$planifyRunning = false;
                 });
             })
             // Exit automatically if options.exit is set to true

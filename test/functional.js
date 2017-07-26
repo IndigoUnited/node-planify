@@ -165,7 +165,26 @@ describe('functional', () => {
                 throw new Error('Should have failed');
             }, (err) => {
                 expect(err).to.be.an.instanceOf(Error);
-                expect(err.message).to.equal('Plan is already running');
+                expect(err.message).to.equal('A plan is already running');
+            })
+            .finally(() => promise);
+        });
+
+        it('should fail if trying to run two plans simultaneously', () => {
+            const promise = planify({ reporter: 'silent' })
+            .step('step 1', () => {
+                return Promise.delay(100);
+            })
+            .run();
+
+            return planify({ reporter: 'silent' })
+            .step('step 1', () => {})
+            .run()
+            .then(() => {
+                throw new Error('Should have failed');
+            }, (err) => {
+                expect(err).to.be.an.instanceOf(Error);
+                expect(err.message).to.equal('A plan is already running');
             })
             .finally(() => promise);
         });
