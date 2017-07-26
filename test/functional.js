@@ -171,15 +171,15 @@ describe('functional', () => {
         });
 
         it('should fail if trying to run two plans simultaneously', () => {
-            const promise = planify({ reporter: 'silent' })
+            const promise = planify()
             .step('step 1', () => {
                 return Promise.delay(100);
             })
-            .run();
+            .run({ reporter: 'silent' });
 
-            return planify({ reporter: 'silent' })
+            return planify()
             .step('step 1', () => {})
-            .run()
+            .run({ reporter: 'silent' })
             .then(() => {
                 throw new Error('Should have failed');
             }, (err) => {
@@ -243,7 +243,7 @@ describe('functional', () => {
 
             return planify(initialData)
             .step('step 1', (data) => { stepData = data; })
-            .run()
+            .run({ reporter: 'silent' })
             .then((finalData) => {
                 expect(finalData).to.equal(initialData);
                 expect(stepData).to.equal(initialData);
