@@ -160,14 +160,9 @@ describe('functional', () => {
 
             const promise = plan.run({ reporter: 'silent' });
 
-            return plan.run({ reporter: 'silent' })
-            .then(() => {
-                throw new Error('Should have failed');
-            }, (err) => {
-                expect(err).to.be.an.instanceOf(Error);
-                expect(err.message).to.equal('A plan is already running');
-            })
-            .finally(() => promise);
+            expect(() => plan.run({ reporter: 'silent' })).to.throw('A plan is already running');
+
+            return promise;
         });
 
         it('should fail if trying to run two plans simultaneously', () => {
@@ -177,16 +172,13 @@ describe('functional', () => {
             })
             .run({ reporter: 'silent' });
 
-            return planify()
-            .step('step 1', () => {})
-            .run({ reporter: 'silent' })
-            .then(() => {
-                throw new Error('Should have failed');
-            }, (err) => {
-                expect(err).to.be.an.instanceOf(Error);
-                expect(err.message).to.equal('A plan is already running');
-            })
-            .finally(() => promise);
+            expect(() => {
+                planify()
+                .step('step 1', () => {})
+                .run({ reporter: 'silent' });
+            }).to.throw('A plan is already running');
+
+            return promise;
         });
 
         it('should not allow any more phases or steps to be added if running', () => {
@@ -271,25 +263,19 @@ describe('functional', () => {
         it.skip('should use the options.reporter as a string');
 
         it('should throw an appropriate error if options.reporter does not exist', () => {
-            return planify()
-            .run({ reporter: 'somethingthatwillneverexist' })
-            .then(() => {
-                throw new Error('Should have failed');
-            }, (err) => {
-                expect(err.message).to.equal('Invalid reporter: somethingthatwillneverexist');
-            });
+            expect(() => {
+                planify()
+                .run({ reporter: 'somethingthatwillneverexist' });
+            }).to.throw('Unknown reporter: somethingthatwillneverexist');
         });
 
         it('should throw an appropriate error if options.reporter is not a plain object', () => {
             function Foo() {}
 
-            return planify()
-            .run({ reporter: new Foo() })
-            .then(() => {
-                throw new Error('Should have failed');
-            }, (err) => {
-                expect(err.message).to.equal('Reporter must be a string or a plain object');
-            });
+            expect(() => {
+                planify()
+                .run({ reporter: new Foo() });
+            }).to.throw('Reporter must be a string or a plain object');
         });
 
         it('should exit automatically with an appropriate exit code if options.exit is set to true', () => {
@@ -375,6 +361,8 @@ describe('functional', () => {
                     },
                 };
 
+                bufferStdio.start();
+
                 return planify()
                 .step('step 1', options, () => {
                     console.log('write to stdout');
@@ -384,7 +372,10 @@ describe('functional', () => {
                 })
                 .run({ reporter })
                 .finally(() => {
-                    bufferStdio.finish();
+                    const { stdout, stderr } = bufferStdio.finish();
+
+                    expect(stdout).to.equal('');
+                    expect(stderr).to.equal('');
                 })
                 .return(called);
             }

@@ -20,13 +20,13 @@ function setupReporter(reporter) {
         try {
             factory = require('./reporters/' + reporter);
         } catch (err) {
-            err.message = 'Invalid reporter: ' + reporter;
+            err.message = 'Unknown reporter: ' + reporter;
             throw err;
         }
 
         reporter = factory();
     } else if (!isPlainObject(reporter)) {
-        throw new Error('Reporter must be a string or a plain object');
+        throw new TypeError('Reporter must be a string or a plain object');
     }
 
     // Finally promisify it
@@ -61,23 +61,20 @@ function planify(data) {
                 exit: false,
             }, options);
 
-            return Promise.try(() => {
-                // Setup reporter
-                const reporter = setupReporter(options.reporter);
+            // Setup reporter
+            const reporter = setupReporter(options.reporter);
 
-                // Check if a plan is running
-                if (global.$planifyRunning) {
-                    return Promise.reject(new Error('A plan is already running'))
-                    .nodeify(done);
-                }
+            // Check if a plan is running
+            if (global.$planifyRunning) {
+                throw new Error('A plan is already running');
+            }
 
-                // Run actual plan
-                global.$planifyRunning = true;  // Use global because several versions might be used
+            // Run actual plan
+            global.$planifyRunning = true;  // Use global because several versions might be used
 
-                return run(plan.node, onNotification.bind(null, reporter))
-                .finally(() => {
-                    global.$planifyRunning = false;
-                });
+            return run(plan.node, onNotification.bind(null, reporter))
+            .finally(() => {
+                global.$planifyRunning = false;
             })
             // Exit automatically if options.exit is set to true
             .then(() => {
