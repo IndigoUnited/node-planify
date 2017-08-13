@@ -372,10 +372,10 @@ describe('functional', () => {
                 })
                 .run({ reporter })
                 .finally(() => {
-                    const { stdout, stderr } = bufferStdio.finish();
+                    const buffered = bufferStdio.finish();
 
-                    expect(stdout).to.equal('');
-                    expect(stderr).to.equal('');
+                    expect(buffered.stdout).to.equal('');
+                    expect(buffered.stderr).to.equal('');
                 })
                 .return(called);
             }
