@@ -30,7 +30,11 @@ function error(err) {
     if (typeof err.detail === 'string') {
         str += '\n';
         str += err.detail + '\n';
-    } else if (!err.hideStack) {
+    }
+
+    const hideStack = err.hideStack != null ? err.hideStack : !!err.detail;
+
+    if (!hideStack) {
         str += '\n';
         str += 'Stack:\n';
         str += prettyError.render(err).trimRight() + '\n';

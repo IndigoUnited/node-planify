@@ -128,10 +128,12 @@ All reporters print errors in a consistent way:
 ```
 [err.code|err.name if !== 'Error'] err.message
 
-[err.detail|err.stack if !err.hideStack]
+[err.detail]
+
+[err.stack if err.hideStack === false]
 ```
 
-If an error contains a `detail` property, it will be printed bellow the message. If not, the stack will be printed instead unless `hideStack` is set to `false`.
+By default, the stack trace will be printed if there's no `err.detail`. You can override this behavior by setting `err.hideStack` to `true` or `false` to hide or show respectively.
 
 
 ### Full API
