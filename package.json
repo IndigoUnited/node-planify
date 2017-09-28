@@ -45,7 +45,7 @@
     "@satazor/eslint-config": "^3.0.0",
     "chai": "^4.0.2",
     "cli-character-set": "^0.1.0",
-    "coveralls": "^2.11.6",
+    "coveralls": "^2.13.3",
     "eslint": "^3.0.0",
     "glob": "^7.0.0",
     "istanbul": "^0.4.1",
