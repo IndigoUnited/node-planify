@@ -85,6 +85,10 @@ function planify(data) {
                 }
 
                 process.exit(err.exitCode || 1);
+
+                // This is necessary if the `process.exit()` is being mocked. This way it is possible
+                // to catch the error and assert it accordingly.
+                throw err;
             })
             .return(plan.node.data)
             .nodeify(done);
