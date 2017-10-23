@@ -292,7 +292,7 @@ describe('functional', () => {
                 .step('step 1', () => { throw new Error('foo'); })
                 .run({ reporter: 'silent', exit: true });
             })
-            .then(() => {
+            .catch(() => {
                 return planify()
                 .step('step 1', () => {
                     const err = new Error('foo');
@@ -302,11 +302,14 @@ describe('functional', () => {
                 })
                 .run({ reporter: 'silent', exit: true });
             })
+            .then(() => {
+                throw new Error('Should have failed');
+            }, (err) => {
+                expect(err.message).to.eql('foo');
+                expect(exitCodes).to.eql([0, 1, 25]);
+            })
             .finally(() => {
                 process.exit = originalExit;
-            })
-            .then(() => {
-                expect(exitCodes).to.eql([0, 1, 25]);
             });
         });
     });
