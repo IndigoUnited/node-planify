@@ -9,7 +9,7 @@ const symbols = {
 
 /* istanbul ignore next */
 function swapSymbol(name, value) {
-    symbols.name = value;
+    symbols[name] = value;
 
     Object.defineProperty(symbols, '_' + name, {  // This is necessary for the tests!
         value,
