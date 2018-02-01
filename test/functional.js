@@ -243,6 +243,96 @@ describe('functional', () => {
         });
     });
 
+    describe('.merge()', () => {
+        it('should merge a plan into a plan', () => {
+            const plan1 = planify({ foo: 'foo' })
+            .step('plan1.step1', () => {})
+            .phase('plan1.phase1', (phase) => {
+                phase
+                .step('plan1.phase1.step1', () => {})
+                .step('plan1.phase1.step2', () => {});
+            });
+
+            const plan2 = planify({ bar: 'bar' })
+            .step('plan2.step1', () => {})
+            .phase('plan2.phase1', (phase) => {
+                phase
+                .step('plan2.phase1.step1', () => {})
+                .step('plan2.phase1.step2', () => {});
+            });
+
+            plan1.merge(plan2);
+
+            const plan1Node = plan1.getNode();
+            const plan2Node = plan2.getNode();
+
+            expect(plan1Node.data).to.eql({ foo: 'foo', bar: 'bar' });
+            expect(plan1Node.steps).to.have.length(6);
+            expect(plan1Node.children).to.have.length(4);
+            expect(plan2Node.children).to.have.length(0);
+
+            plan1Node.children.forEach((child) => expect(child.parent).to.equal(plan1Node));
+
+            expect(plan1Node.children[0].label).to.equal('plan1.step1');
+            expect(plan1Node.children[1].label).to.equal('plan1.phase1');
+            expect(plan1Node.children[2].label).to.equal('plan2.step1');
+            expect(plan1Node.children[3].label).to.equal('plan2.phase1');
+
+            expect(plan1Node.children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[1].children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[1].children[1].plan).to.equal(plan1Node);
+            expect(plan1Node.children[2].plan).to.equal(plan1Node);
+            expect(plan1Node.children[3].children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[3].children[1].plan).to.equal(plan1Node);
+        });
+
+        it('should merge a phase into a plan', () => {
+            const plan1 = planify({ foo: 'foo' })
+            .step('plan1.step1', () => {})
+            .phase('plan1.phase1', (phase) => {
+                phase
+                .step('plan1.phase1.step1', () => {})
+                .step('plan1.phase1.step2', () => {});
+            });
+
+            const plan2 = planify({ bar: 'bar' })
+            .step('plan2.step1', () => {})
+            .phase('plan2.phase1', (phase) => {
+                phase
+                .step('plan2.phase1.step1', () => {})
+                .step('plan2.phase1.step2', () => {});
+            });
+
+            plan1.merge(plan2);
+
+            const plan1Node = plan1.getNode();
+            const plan2Node = plan2.getNode();
+
+            expect(plan1Node.data).to.eql({ foo: 'foo', bar: 'bar' });
+            expect(plan1Node.steps).to.have.length(6);
+            expect(plan1Node.children).to.have.length(4);
+            expect(plan2Node.children).to.have.length(0);
+
+            plan1Node.children.forEach((child) => expect(child.parent).to.equal(plan1Node));
+
+            expect(plan1Node.children[0].label).to.equal('plan1.step1');
+            expect(plan1Node.children[1].label).to.equal('plan1.phase1');
+            expect(plan1Node.children[2].label).to.equal('plan2.step1');
+            expect(plan1Node.children[3].label).to.equal('plan2.phase1');
+
+            expect(plan1Node.children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[1].children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[1].children[1].plan).to.equal(plan1Node);
+            expect(plan1Node.children[2].plan).to.equal(plan1Node);
+            expect(plan1Node.children[3].children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[3].children[1].plan).to.equal(plan1Node);
+        });
+
+        it('shoul merge a plan into a phase');
+
+        it('should merge a phase into a phase');
+    });
+
     describe('options', () => {
         it('should use the options.reporter as an object', () => {
             let ok = false;
