@@ -3,7 +3,6 @@
 'use strict';
 
 const Promise = require('bluebird');
-const merge = require('lodash/merge');
 const get = require('lodash/get');
 const isPlainObject = require('lodash/isPlainObject');
 const run = require('./lib/run');
@@ -45,7 +44,7 @@ function onNotification(reporter, node, action) {
 function planify(data) {
     const plan = build(data);
 
-    return merge(plan, {
+    return Object.assign(plan, {
         getNode() {
             return plan.node;
         },

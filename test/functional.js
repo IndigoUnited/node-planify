@@ -20,7 +20,7 @@ describe('functional', () => {
             const plan = planify();
 
             plan.phase('phase label', (phase) => {
-                expect(phase).to.have.all.keys('phase', 'step');
+                expect(phase).to.have.all.keys('phase', 'step', 'merge');
             });
 
             const node = plan.getNode();
@@ -240,6 +240,102 @@ describe('functional', () => {
                 expect(finalData).to.equal(initialData);
                 expect(stepData).to.equal(initialData);
             });
+        });
+    });
+
+    describe('.merge()', () => {
+        it('should merge a plan into a plan', () => {
+            const plan1 = planify({ foo: 'foo' })
+            .step('plan1.step1', () => {})
+            .phase('plan1.phase1', (phase) => {
+                phase
+                .step('plan1.phase1.step1', () => {})
+                .step('plan1.phase1.step2', () => {});
+            });
+
+            const plan2 = planify({ bar: 'bar' })
+            .step('plan2.step1', () => {})
+            .phase('plan2.phase1', (phase) => {
+                phase
+                .step('plan2.phase1.step1', () => {})
+                .step('plan2.phase1.step2', () => {});
+            });
+
+            plan1.merge(plan2);
+
+            const plan1Node = plan1.getNode();
+            const plan2Node = plan2.getNode();
+
+            expect(plan1Node.data).to.eql({ foo: 'foo', bar: 'bar' });
+            expect(plan1Node.steps).to.have.length(6);
+            expect(plan1Node.children).to.have.length(4);
+            expect(plan2Node.children).to.have.length(0);
+
+            plan1Node.children.forEach((child) => expect(child.parent).to.equal(plan1Node));
+
+            expect(plan1Node.children[0].label).to.equal('plan1.step1');
+            expect(plan1Node.children[1].label).to.equal('plan1.phase1');
+            expect(plan1Node.children[2].label).to.equal('plan2.step1');
+            expect(plan1Node.children[3].label).to.equal('plan2.phase1');
+
+            expect(plan1Node.children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[1].children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[1].children[1].plan).to.equal(plan1Node);
+            expect(plan1Node.children[2].plan).to.equal(plan1Node);
+            expect(plan1Node.children[3].children[0].plan).to.equal(plan1Node);
+            expect(plan1Node.children[3].children[1].plan).to.equal(plan1Node);
+        });
+
+        it('should merge a plan into a phase', () => {
+            const plan1 = planify({ foo: 'foo' })
+            .step('plan1.step1', () => {})
+            .phase('plan1.phase1', (phase) => {
+                phase
+                .step('plan1.phase1.step1', () => {})
+                .step('plan1.phase1.step2', () => {});
+            });
+
+            const plan2 = planify({ bar: 'bar' })
+            .step('plan2.step1', () => {})
+            .phase('plan2.phase1', (phase) => {
+                phase
+                .step('plan2.phase1.step1', () => {})
+                .step('plan2.phase1.step2', () => {})
+                .merge(plan1);
+            });
+
+            const plan1Node = plan1.getNode();
+            const plan2Node = plan2.getNode();
+
+            expect(plan2Node.data).to.eql({ foo: 'foo', bar: 'bar' });
+            expect(plan2Node.steps).to.have.length(6);
+            expect(plan2Node.children).to.have.length(2);
+            expect(plan1Node.children).to.have.length(0);
+
+            plan2Node.children.forEach((child) => expect(child.parent).to.equal(plan2Node));
+
+            expect(plan2Node.children[0].label).to.equal('plan2.step1');
+            expect(plan2Node.children[1].label).to.equal('plan2.phase1');
+            expect(plan2Node.children[1].children[0].label).to.equal('plan2.phase1.step1');
+            expect(plan2Node.children[1].children[1].label).to.equal('plan2.phase1.step2');
+            expect(plan2Node.children[1].children[2].label).to.equal('plan1.step1');
+            expect(plan2Node.children[1].children[3].label).to.equal('plan1.phase1');
+            expect(plan2Node.children[1].children[3].children).to.have.length(2);
+        });
+
+        it('should fail if src is not a plan', () => {
+            const plan = planify({ foo: 'foo' });
+
+            let phase;
+
+            planify({ bar: 'bar' })
+            .phase('some phase', (phase_) => {
+                phase = phase_;
+            });
+
+            expect(() => {
+                plan.merge(phase);
+            }).to.throw('Can only merge a plan');
         });
     });
 
