@@ -181,7 +181,7 @@ plan.step('Some cool step', { slow: 500 }, (data, done) => {
 
 Adds a phase with `label` to the plan, executing `fn` with a `phase` object to define the phase plan.
 
-The `phase` object has the `step` and `phase` methods, allowing you to build a hierarchy of other phases and steps.
+The `phase` object has the `step`, `phase` and `merge` methods, allowing you to build a hierarchy of other phases and steps.
 
 ```js
 const planify = require('planify');
@@ -191,6 +191,29 @@ plan.phase('Phase 1', (phase) => {
     phase.step('Inner step', () => {});
     phase.phase('Inner phase', () => {});
 });
+```
+
+#### .merge(plan)
+
+Merges a plan into self, which may be a plan or a phase.
+
+The child steps and phases of `plan` becomes children of self. Additionally, the `data` associated with the `plan` are shallow copied to self.
+
+```js
+const planify = require('planify');
+
+const plan1 = planify()
+.phase('Phase 1', (phase) => {
+    phase.step('Inner step', () => {});
+    phase.phase('Inner phase', () => {});
+});
+
+const plan2 = planify()
+.phase('Phase 2', (phase) => {
+    phase.step('Inner step', () => {});
+    phase.phase('Inner phase', () => {});
+})
+.merge(plan1);
 ```
 
 #### .run([options])
