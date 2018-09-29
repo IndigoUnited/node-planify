@@ -39,7 +39,7 @@
     "pretty-error": "^2.1.0",
     "serialize-error": "^2.1.0",
     "signal-exit": "^3.0.1",
-    "strip-ansi": "^4.0.0"
+    "strip-ansi": "^5.0.0"
   },
   "devDependencies": {
     "@satazor/eslint-config": "^3.0.0",
