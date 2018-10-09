@@ -37,7 +37,7 @@
     "indent-string": "^3.0.0",
     "lodash": "^4.5.0",
     "pretty-error": "^2.1.0",
-    "serialize-error": "^2.1.0",
+    "serialize-error": "^3.0.0",
     "signal-exit": "^3.0.1",
     "strip-ansi": "^4.0.0"
   },
