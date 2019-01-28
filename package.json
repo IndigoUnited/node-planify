@@ -30,7 +30,7 @@
   "author": "IndigoUnited <hello@indigounited.com> (http://indigounited.com)",
   "license": "MIT",
   "dependencies": {
-    "ansi-escapes": "^3.0.0",
+    "ansi-escapes": "^3.2.0",
     "bluebird": "^3.1.1",
     "chalk": "^2.0.0",
     "cli-progress-bar": "^1.0.0",
